@@ -85,3 +85,38 @@ Migrating to DeviseCreateUsers (20180820070816)
   ↳ bin/rails:9
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RolifyCreateRoles (20180820071433)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "roles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "resource_type" varchar, "resource_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_roles_on_resource_type_and_resource_id" ON "roles" ("resource_type", "resource_id")[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users_roles" ("user_id" integer, "role_id" integer)[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_roles_on_user_id" ON "users_roles" ("user_id")[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_roles_on_role_id" ON "users_roles" ("role_id")[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_roles_on_name" ON "roles" ("name")[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_roles_on_name_and_resource_type_and_resource_id" ON "roles" ("name", "resource_type", "resource_id")[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_roles_on_user_id_and_role_id" ON "users_roles" ("user_id", "role_id")[0m
+  ↳ db/migrate/20180820071433_rolify_create_roles.rb:17
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820071433"]]
+  ↳ bin/rails:9
+  [1m[35m (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
