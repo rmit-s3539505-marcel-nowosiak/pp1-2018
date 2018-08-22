@@ -4,7 +4,7 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :body
       t.boolean :published
-      t.int :min_salary
+      t.float :min_salary
       t.float :max_salary
       t.string :location
       t.references :req_skill_set, foreign_key: true

@@ -12,6 +12,26 @@
 
 ActiveRecord::Schema.define(version: 2018_08_21_095606) do
 
+  create_table "listings", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.boolean "published"
+    t.float "min_salary"
+    t.float "max_salary"
+    t.string "location"
+    t.integer "req_skill_set_id"
+    t.integer "add_skill_set_id"
+    t.string "hours"
+    t.integer "industry_id"
+    t.integer "employer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["add_skill_set_id"], name: "index_listings_on_add_skill_set_id"
+    t.index ["employer_id"], name: "index_listings_on_employer_id"
+    t.index ["industry_id"], name: "index_listings_on_industry_id"
+    t.index ["req_skill_set_id"], name: "index_listings_on_req_skill_set_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
