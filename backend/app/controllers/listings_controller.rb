@@ -1,16 +1,22 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # GET /listings
   def index
     @listings = Listing.all
-
-    render json: @listings
   end
 
   # GET /listings/1
   def show
-    render json: @listing
+  end
+
+  # GET /listings/new
+  def new
+    @listing = Listing.new
+  end
+
+  # GET /listings/1/edit
+  def edit
   end
 
   # POST /listings
@@ -18,24 +24,25 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
 
     if @listing.save
-      render json: @listing, status: :created, location: @listing
+      redirect_to @listing, notice: 'Listing was successfully created.'
     else
-      render json: @listing.errors, status: :unprocessable_entity
+      render :new
     end
   end
 
   # PATCH/PUT /listings/1
   def update
     if @listing.update(listing_params)
-      render json: @listing
+      redirect_to @listing, notice: 'Listing was successfully updated.'
     else
-      render json: @listing.errors, status: :unprocessable_entity
+      render :edit
     end
   end
 
   # DELETE /listings/1
   def destroy
     @listing.destroy
+    redirect_to listings_url, notice: 'Listing was successfully destroyed.'
   end
 
   private
@@ -46,6 +53,6 @@ class ListingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def listing_params
-      params.require(:listing).permit(:title, :body, :published, :min_salary, :max_salary, :location, :req_skill_set_id, :add_skill_set_id, :hours, :industry_id, :employer_id)
+      params.fetch(:listing, {})
     end
 end
