@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_155951) do
+ActiveRecord::Schema.define(version: 2018_08_22_163424) do
 
   create_table "employer_profiles", force: :cascade do |t|
     t.integer "user_id"
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(version: 2018_08_22_155951) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hunter_profiles_on_user_id"
+  end
+
+  create_table "hunter_profiles_skills", id: false, force: :cascade do |t|
+    t.integer "hunter_profile_id", null: false
+    t.integer "skill_id", null: false
+    t.index ["hunter_profile_id", "skill_id"], name: "index_hunter_profiles_skills_on_hunter_profile_id_and_skill_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -72,6 +78,12 @@ ActiveRecord::Schema.define(version: 2018_08_22_155951) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,6 +94,9 @@ ActiveRecord::Schema.define(version: 2018_08_22_155951) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.string "business_name"
+    t.string "business_position"
+    t.string "business_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
