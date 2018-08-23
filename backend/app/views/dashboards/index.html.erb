@@ -1,2 +1,7 @@
 <p id="notice"><%= notice %></p>
-<h1>Welcome to your dashboard, <%= @user.first_name%></h1>
+<% if @user.first_name %>
+  <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
+<% else %>
+  <h1>Create your profile</h1>
+  <!-- Render the profile creation panel etc -->
+<% end %>

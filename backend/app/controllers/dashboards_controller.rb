@@ -1,9 +1,10 @@
 class DashboardsController < ApplicationController
+  before_action :require_login
   # GET /dashboards
   def index
-    # @user = nil
-    # @profile = nil
-    @user = find_user(1)
-    # @profile = find_hunter_profile(@user.id) unless @user.nil?
+    @user = nil
+    @profile = nil
+    @user = find_user(current_user.id)
+    @profile = find_hunter_profile(@user.id) unless @user.nil?
   end
 end
