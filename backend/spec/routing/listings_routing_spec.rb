@@ -2,12 +2,7 @@ require "rails_helper"
 
 RSpec.describe ListingsController, type: :routing do
   describe "routing" do
-
-    it "routes to #index" do
-      expect(:get => "/listings").to route_to("listings#index")
-    end
-
-
+    
     it "routes to #show" do
       expect(:get => "/listings/1").to route_to("listings#show", :id => "1")
     end

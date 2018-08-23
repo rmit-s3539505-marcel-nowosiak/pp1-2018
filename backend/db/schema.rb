@@ -15,27 +15,17 @@ ActiveRecord::Schema.define(version: 2018_08_22_163424) do
   create_table "employer_profiles", force: :cascade do |t|
     t.integer "user_id"
     t.string "location"
+    t.string "business_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_employer_profiles_on_user_id"
   end
 
-  create_table "employers", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_employers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_employers_on_reset_password_token", unique: true
-  end
-
   create_table "hunter_profiles", force: :cascade do |t|
     t.integer "user_id"
     t.string "location"
-    t.boolean "employed"
+    t.float "min_salary"
+    t.string "hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hunter_profiles_on_user_id"
@@ -94,9 +84,6 @@ ActiveRecord::Schema.define(version: 2018_08_22_163424) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "business_name"
-    t.string "business_position"
-    t.string "business_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
