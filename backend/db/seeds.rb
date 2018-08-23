@@ -5,3 +5,32 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+users = User.create(
+  {
+    id: 1,
+    email: 'seeded_user@gmail.com',
+    first_name: 'Seeded',
+    last_name: 'User',
+    password: 'Password1!',
+    password_confirmation: 'Password1!'
+  }
+)
+
+HunterProfile.create(
+  {
+    id: 1,
+    user_id: 1,
+    min_salary: 23.7,
+    location: 'Melbourne CBD',
+    hours: 'Full Time'
+  }
+)
+
+EmployerProfile.create(
+  {
+    id: 1,
+    user_id:  1,
+    location: 'Melbourne CBD',
+    business_name: 'RMIT University'
+  }
+)

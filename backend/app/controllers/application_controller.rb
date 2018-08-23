@@ -1,4 +1,5 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
+  # before_action :require_login
   # define app wide helper methods to more easily render the dashboards
   def find_user(id)
     User.find(id)
