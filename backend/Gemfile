@@ -19,6 +19,12 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
