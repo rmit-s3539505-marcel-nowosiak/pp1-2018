@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
     EmployerProfile.find_by(:user_id => user_id)
   end
 
-
   private
     def logged_in?
       true unless current_user == nil
