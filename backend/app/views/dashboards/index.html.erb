@@ -10,16 +10,4 @@
   <% end %>
 </div>
 
-<div class="matches">
-<% if @matches.nil? %>
-  <h3>No matches currently</h3>
-<% else %>
-  <% @matches.each do |m| %>
-    <h3><%= m.title %></h3>
-    <p><%= m.body %></p>
-    <p><%= m.min_salary %></p>
-  <% end %>
-<% end %>
-</div>
-
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
