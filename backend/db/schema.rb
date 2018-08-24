@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 2018_08_24_035457) do
     t.index ["user_id"], name: "index_employer_profiles_on_user_id"
   end
 
-  create_table "hunter_listings", id: false, force: :cascade do |t|
-    t.integer "hunter_id", null: false
+  create_table "hunter_profiles_listings", id: false, force: :cascade do |t|
+    t.integer "hunter_profile_id", null: false
     t.integer "listing_id", null: false
-    t.index ["hunter_id", "listing_id"], name: "index_hunter_listings_on_hunter_id_and_listing_id"
+    t.index ["hunter_profile_id", "listing_id"], name: "index_hunter_listings_on_hunter_id_and_listing_id"
   end
 
   create_table "hunter_profiles", force: :cascade do |t|
