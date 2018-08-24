@@ -1,4 +1,14 @@
 class ApplicationController < ActionController::Base
+
+  before_action :configure_permitted_parameters, if: :devise_constroller?
+  # before_action :require_login
+  
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) {u.permit(:first_name, :last_name, :email, :password, :password_confirmation)}
+  end
+
+  before_action :require_login
+
   # define app wide helper methods to more easily render the dashboards
   def find_user(id)
     User.find(id)
