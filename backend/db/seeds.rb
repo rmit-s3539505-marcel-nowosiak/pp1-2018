@@ -9,8 +9,8 @@ users = User.create(
   {
     id: 1,
     email: 'seeded_user@gmail.com',
-    first_name: 'Seeded',
-    last_name: 'User',
+    first_name: 'User',
+    last_name: 'Userson',
     password: 'Password1!',
     password_confirmation: 'Password1!'
   }
