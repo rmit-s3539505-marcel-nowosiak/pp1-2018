@@ -21,7 +21,9 @@ Listing.create(
     id: 1,
     title: 'First listing',
     body: 'Some more info regarding the listing',
-    published: true
+    published: true,
+    accepted: false,
+    application: false
   }
 )
 

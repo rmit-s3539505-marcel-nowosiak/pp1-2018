@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 2018_08_24_035457) do
   create_table "hunter_profiles_listings", id: false, force: :cascade do |t|
     t.integer "hunter_profile_id", null: false
     t.integer "listing_id", null: false
-    t.boolean "accepted"
-    t.boolean "application"
     t.index [nil, "listing_id"], name: "index_hunter_profiles_listings_on_hunter_id_and_listing_id"
   end
 
@@ -49,6 +47,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_035457) do
     t.string "title"
     t.text "body"
     t.boolean "published"
+    t.boolean "accepted"
+    t.boolean "application"
     t.float "min_salary"
     t.float "max_salary"
     t.string "location"

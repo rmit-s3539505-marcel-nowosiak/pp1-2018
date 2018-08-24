@@ -14,10 +14,14 @@ class ApplicationController < ActionController::Base
     EmployerProfile.find_by(:user_id => user_id)
   end
 
-  # this simply returns all the listings that are matched. need to modify it to
-  # just query based on the hunter_profile.id
+  # this simply returns all the listings that are matched
   def all_matches
     Listing.joins(:hunter_profiles)
+  end
+
+  def find_matches(user_id)
+    # just query based on the hunter_profile.id
+    Listing.joins(:hunter_profiles)#.where()
   end
 
   private

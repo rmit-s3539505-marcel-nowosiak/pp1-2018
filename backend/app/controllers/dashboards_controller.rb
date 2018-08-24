@@ -1,5 +1,4 @@
 class DashboardsController < ApplicationController
-  before_action :require_login
   # GET /dashboards
   def index
     @user = find_user(current_user.id)
