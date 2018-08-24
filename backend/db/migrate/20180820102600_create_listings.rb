@@ -7,11 +7,11 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.float :min_salary
       t.float :max_salary
       t.string :location
-      t.references :req_skill_set, foreign_key: true
-      t.references :add_skill_set, foreign_key: true
       t.string :hours
-      t.references :industry, foreign_key: true
-      t.references :employer, foreign_key: true
+      # t.references :req_skill_set, foreign_key: true
+      # t.references :add_skill_set, foreign_key: true
+      # t.references :industry, foreign_key: true
+      # t.references :employer, foreign_key: true
 
       t.timestamps
     end
