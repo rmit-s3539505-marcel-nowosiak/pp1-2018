@@ -34,3 +34,9 @@ EmployerProfile.create(
     business_name: 'RMIT University'
   }
 )
+
+Listing.create(
+  {
+    id: 1
+  }
+)

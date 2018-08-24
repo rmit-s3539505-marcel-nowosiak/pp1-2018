@@ -4,5 +4,6 @@ class DashboardsController < ApplicationController
   def index
     @user = find_user(current_user.id)
     @profile = find_hunter_profile(@user.id) unless @user.nil?
+    @matches = find_matches(@user.id) unless @user.nil?
   end
 end
