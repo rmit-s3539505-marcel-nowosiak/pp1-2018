@@ -33,8 +33,7 @@ HunterProfile.create(
     user_id: 1,
     min_salary: 23.7,
     location: 'Melbourne CBD',
-    hours: 'Full Time',
-    listings: Listing.where(id: 1)
+    hours: 'Full Time'
   }
 )
 
@@ -44,5 +43,16 @@ EmployerProfile.create(
     user_id:  1,
     location: 'Melbourne CBD',
     business_name: 'RMIT University'
+  }
+)
+
+Match.create(
+  {
+    # id: 1,
+    # offered: true,
+    # accepted: false,
+    # application: false,
+    hunterprofile_id: 1,
+    listing_id: 1
   }
 )
