@@ -5,10 +5,11 @@
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
   <% else %>
     <h1>Create your profile</h1>
-    <%= @matches %>
     <!-- Render the profile creation panel etc -->
     <%= render "create_profile" %>
   <% end %>
 </div>
+
+<%= @matches %>
 
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
