@@ -27,7 +27,12 @@ class ApplicationController < ActionController::Base
 
   def find_hunter_matches(prof_id)
     # will contain all the matches for a profile
-    @matches = Match.find_by(:hunterprofile_id => prof_id)
+    @matches = Match.all.where(:hunterprofile_id => prof_id)
+    @listings = []
+    @matches.each do |m|
+      @listings.push(Listing.find_by(:id => m.listing_id))
+    end
+    @listings
   end
 
   private
