@@ -2,12 +2,24 @@
 
 <div class="panel">
   <% if @user.first_name %>
-    <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
+  <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
   <% else %>
-    <h1>Create your profile</h1>
-    <!-- Render the profile creation panel etc -->
-    <%= render "create_profile" %>
+  <h1>Create your profile</h1>
+  <!-- Render the profile creation panel etc -->
+  <%= render "create_profile" %>
   <% end %>
 </div>
+
+<% if @listings %>
+  <% @listings.each do |l| %>
+  <div class="listing-details">
+    <li><%= l.title %></li>
+    <ul>
+      <li><%= l.body %></li>
+      <li><%= l.min_salary %></li>
+    </ul>
+  </div>
+    <% end %>
+  <% end %>
 
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>

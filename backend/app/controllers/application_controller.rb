@@ -1,13 +1,16 @@
 class ApplicationController < ActionController::Base
 
-  before_action :configure_permitted_parameters, if: :devise_constroller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :require_login
-  
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) {u.permit(:first_name, :last_name, :email, :password, :password_confirmation)}
-  end
 
-  before_action :require_login
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.for(:sign_up) {u.permit(:first_name, :last_name, :email, :password, :password_confirmation)}
+  # end
+
+  # before_action :require_login
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
 
   # define app wide helper methods to more easily render the dashboards
   def find_user(id)
@@ -22,14 +25,14 @@ class ApplicationController < ActionController::Base
     EmployerProfile.find_by(:user_id => user_id)
   end
 
-  # this simply returns all the listings that are matched
-  def all_matches
-    Listing.joins(:hunter_profiles)
-  end
-
-  def find_matches(user_id)
-    # just query based on the hunter_profile.id
-    Listing.joins(:hunter_profiles)#.where()
+  def find_hunter_matches(prof_id)
+    # will contain all the matches for a profile
+    @matches = Match.all.where(:hunterprofile_id => prof_id)
+    @listings = []
+    @matches.each do |m|
+      @listings.push(Listing.find_by(:id => m.listing_id))
+    end
+    @listings
   end
 
   private
@@ -42,5 +45,9 @@ class ApplicationController < ActionController::Base
         flash[:error] = "You must be logged in to access this section"
         redirect_to new_user_session_url # halts request cycle
       end
+    end
+
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :password, :password_confirmation])
     end
 end
