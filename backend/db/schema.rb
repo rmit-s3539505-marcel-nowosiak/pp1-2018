@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_163424) do
+ActiveRecord::Schema.define(version: 2018_08_24_145629) do
 
   create_table "employer_profiles", force: :cascade do |t|
     t.integer "user_id"
@@ -41,20 +41,26 @@ ActiveRecord::Schema.define(version: 2018_08_22_163424) do
     t.string "title"
     t.text "body"
     t.boolean "published"
+    t.boolean "accepted"
+    t.boolean "application"
     t.float "min_salary"
     t.float "max_salary"
     t.string "location"
-    t.integer "req_skill_set_id"
-    t.integer "add_skill_set_id"
     t.string "hours"
-    t.integer "industry_id"
-    t.integer "employer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["add_skill_set_id"], name: "index_listings_on_add_skill_set_id"
-    t.index ["employer_id"], name: "index_listings_on_employer_id"
-    t.index ["industry_id"], name: "index_listings_on_industry_id"
-    t.index ["req_skill_set_id"], name: "index_listings_on_req_skill_set_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.boolean "accepted"
+    t.boolean "offered"
+    t.boolean "application"
+    t.integer "hunterprofile_id"
+    t.integer "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hunterprofile_id"], name: "index_matches_on_hunterprofile_id"
+    t.index ["listing_id"], name: "index_matches_on_listing_id"
   end
 
   create_table "roles", force: :cascade do |t|
