@@ -13,6 +13,8 @@ gem 'puma', '~> 3.11'
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 gem 'redis-rails'
+# use sidekiq for queues 
+gem 'sidekiq'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
@@ -44,6 +46,8 @@ group :development, :test do
   gem 'rspec-rails'
   # factory girl is deprecated, upgrade to factory_bot
   gem 'factory_bot'
+  # user faker with factory bot
+  gem 'faker'
 end
 
 group :production do

@@ -34,6 +34,8 @@ module Backend
 
     config.middleware.use ActionDispatch::Flash
 
+    config.active_job.queue_name_prefix = Rails.env
+    
     config.generators do |g|
       g.test_framework :rspec
     end
