@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hunter_profiles/new'
   devise_for :users, :controllers => {
     :registrations => "users/registrations",
     :sessions => "users/sessions",
