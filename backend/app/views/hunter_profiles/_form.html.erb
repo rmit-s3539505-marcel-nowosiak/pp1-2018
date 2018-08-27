@@ -1,0 +1,11 @@
+<%= form_for @hunter_profile do |x| %>
+  <%= x.error_messages %>
+  <p>
+    <%= x.label :industry %><br />
+    <%= x.text_field :industry %>
+  </p>
+  <%= x.fields_for :skill do |builder| %>
+    <%= render "skill_fields", :x =>builder %>
+  <% end %>
+  <p><%= x.submit "Create Profile" %></p>
+<% end %>
