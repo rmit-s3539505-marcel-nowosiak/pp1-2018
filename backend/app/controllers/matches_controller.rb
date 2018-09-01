@@ -6,8 +6,8 @@ class MatchesController < ApplicationController
   end
 
   # GET /matches/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /matches
   def create
@@ -16,13 +16,8 @@ class MatchesController < ApplicationController
   end
 
   # PATCH/PUT /matches/1
-  def update
-    if @match.update(match_params)
-      redirect_to @match, notice: 'Match was successfully updated.'
-    else
-      render :edit
-    end
-  end
+  # def update
+  # end
 
   # DELETE /matches/1
   def destroy
@@ -37,6 +32,6 @@ class MatchesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def match_params
-      params.fetch(:match, {})
+      # params.fetch(:match, {user_id, listing_id})
     end
 end
