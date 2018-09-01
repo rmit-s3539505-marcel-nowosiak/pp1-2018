@@ -11,6 +11,35 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :listing_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, id: :listing_body %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :min_salary %>
+    <%= form.number_field :min_salary, id: :listing_min_salary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :max_salary %>
+    <%= form.number_field :max_salary, id: :listing_max_salary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :hours %>
+    <%= form.number_field :hours, id: :listing_hours %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
