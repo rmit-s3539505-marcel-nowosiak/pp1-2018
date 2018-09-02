@@ -11,16 +11,11 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
-<div class="form-group">
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <span class="form-highlight"></span>
-  <span class="form-bar"></span>
 </div>
 
-<div class="form-group">
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -28,17 +23,10 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-  <span class="form-highlight"></span>
-  <span class="form-bar"></span>
-  </div>
 
-<div class="form-group">
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <span class="form-highlight"></span>
-  <span class="form-bar"></span>
   </div>
 
   <div class="actions">
@@ -47,6 +35,7 @@
   
   <div class="card-header text-center">
     <%= render "users/shared/links" %>
+  </div>
   </div>
   </div>
   </div>
