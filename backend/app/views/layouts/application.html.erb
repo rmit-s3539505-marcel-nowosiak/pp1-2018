@@ -10,7 +10,14 @@
   </head>
 
   <body>
-    <%= render 'layouts/navigation' %>
+    <% if content_for?(:navbar) %>
+    <%= yield(:navbar) %>
+<% else %>
+   <%= render 'layouts/navigation' %>
+<% end %>
+     <div style="min-height: 100%; padding-bottom: 1px;">
+        <br><br>
     <%= yield %>
+    </div>
   </body>
 </html>
