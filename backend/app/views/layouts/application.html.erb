@@ -4,6 +4,7 @@
     <title>TestApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta charset="utf-8"/>    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,12 +13,13 @@
   <body>
     <% if content_for?(:navbar) %>
     <%= yield(:navbar) %>
-<% else %>
-   <%= render 'layouts/navigation' %>
-<% end %>
-     <div style="min-height: 100%; padding-bottom: 1px;">
-        <br><br>
+    <% else %>
+       <%= render 'layouts/navigation' %>
+    <% end %>
+     <%= render 'layouts/banner' %>
+ 
     <%= yield %>
-    </div>
-  </body>
+
+  <%= render 'layouts/footer' %>
+</body>
 </html>

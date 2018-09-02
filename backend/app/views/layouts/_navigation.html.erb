@@ -7,11 +7,11 @@
             </button>
             <div class="collapse navbar-collapse" style="background-color: #304a74 !important;" id="navbarSupportedContent">
                 <div class="navbar-nav mr-auto">
-                    <span class="nav-item active"><a href="/pages" class="nav-link">Home</a></span>
-                    <span class="nav-item"><a href="/jobs" class="nav-link">Browse</a></span>
-                    <span class="nav-item"><a href="/pages/job-listings" class="nav-link">Job-Listings</a></span>
-                    <span class="nav-item"><a href="/pages/aboutus" class="nav-link">About Us</a></span>
-                    <span class="nav-item"><a href="/pages/return" class="nav-link">Return</a></span>
+                    <span class="nav-item active"><%= link_to "Home", '#' %></span>
+                    <span class="nav-item"><%= link_to "Browse", '#' %></span>
+                    <span class="nav-item"><%= link_to "Job-Listings", '#' %></span>
+                    <span class="nav-item"><%= link_to "About Us", '#' %></span>
+                    <span class="nav-item"><%= link_to "Return", '#' %></span>
                 </div>
                 <div class="form-inline" style="list-style-type: none;">
                      <%= link_to "Sign up", sign_up_path, class: "waves-effect waves-light btn btn-sm btn-info lighten-2" %>

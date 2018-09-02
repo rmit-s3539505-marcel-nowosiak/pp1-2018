@@ -15,6 +15,9 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap
+//= require colored
 //= require materialize
 //= require html5shiv
+//= require parallax-template
+//= require respond.min
 //= require_tree .
