@@ -27,6 +27,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'sass-rails'
+gem 'mateialize-sass'
 gem 'uglifier'
 gem 'coffee-rails'
 
