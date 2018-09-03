@@ -35,6 +35,15 @@ class ApplicationController < ActionController::Base
     @listings
   end
 
+  # return an array of suitable users for the paramters. Here is where we put our
+  # matching algorithm
+  def match_make(listing_id)
+    # Find the listing that has the particular ID
+    @listing = Listing.find(listing_id)
+    # find users whose preference for salary is less than the one offered
+    HunterProfile.where("min_salary < ?", @listing.min_salary)
+  end
+
   private
     def logged_in?
       true unless current_user == nil
