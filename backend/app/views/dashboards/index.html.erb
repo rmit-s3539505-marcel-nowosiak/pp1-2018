@@ -13,16 +13,4 @@
   <% end %>
 </div>
 
-<% if @listings %>
-  <% @listings.each do |l| %>
-  <div class="listing-details">
-    <li><%= l.title %></li>
-    <ul>
-      <li><%= l.body %></li>
-      <li><%= l.min_salary %></li>
-    </ul>
-  </div>
-    <% end %>
-  <% end %>
-
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
