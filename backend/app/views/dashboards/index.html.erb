@@ -10,13 +10,14 @@
   <% end %>
 </div>
 
-<% if @listings %>
-  <% @listings.each do |l| %>
+<% if @matches %>
+  <% @matches.each do |match, score| %>
   <div class="listing-details">
-    <li><%= l.title %></li>
+    <li><%= match.title %></li>
+    <li><%= score %></li>
     <ul>
-      <li><%= l.body %></li>
-      <li><%= l.min_salary %></li>
+      <li><%= match.body %></li>
+      <li><%= match.min_salary %></li>
     </ul>
   </div>
   <% end %>

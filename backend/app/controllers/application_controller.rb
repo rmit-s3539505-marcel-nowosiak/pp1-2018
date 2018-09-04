@@ -25,23 +25,45 @@ class ApplicationController < ActionController::Base
     EmployerProfile.find_by(:user_id => user_id)
   end
 
+  # to be used to render a list of matches to a particular job hunter on login
   def find_hunter_matches(prof_id)
-    # will contain all the matches for a profile
-    @matches = Match.all.where(:hunterprofile_id => prof_id)
-    @listings = []
-    @matches.each do |m|
-      @listings.push(Listing.find_by(:id => m.listing_id))
+    # find the hunterprofile to match from
+    @hunter = HunterProfile.find(prof_id)
+    return nil if @hunter.nil?
+
+    @matches = Hash.new
+
+    # Return a hash of listings, with scores
+    @listings = Listing.where("
+        min_salary >= ? AND
+        hours == ?
+      ",
+      # listings with a salary that satisfies the hunter
+      @hunter.min_salary,
+      # match job hunters who have preferred hours
+      @hunter.hours
+    )
+    @listings.each do |l|
+      # generate and store the score of the match out of 100 to render in the view
+      # as listings are only those which have matching hours and salary,
+      # we aren't concerned with listings not in this set
+      score = 0
+      @matches[l] = score
     end
-    @listings
+    return @matches
   end
 
-  # return an array of suitable users for the paramters. Here is where we put our
-  # matching algorithm
-  def match_make(listing_id)
+  # to be used to render a list of matches to a particular listing on login
+  def find_listing_matches(listing_id)
     # Find the listing that has the particular ID
     @listing = Listing.find(listing_id)
     # find users whose preference for salary is less than the one offered
     HunterProfile.where("min_salary < ?", @listing.min_salary)
+  end
+
+  # return a float of the KM distance between loc1 and loc2, useful for match
+  # making based on distance. Should use google maps api
+  def distance(loc1, loc2)
   end
 
   private
