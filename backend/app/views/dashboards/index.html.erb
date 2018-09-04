@@ -14,10 +14,10 @@
   <% @matches.each do |match, score| %>
   <div class="listing-details">
     <li><%= match.title %></li>
-    <li><%= score %></li>
+    <li><%= score %>% match</li>
     <ul>
       <li><%= match.body %></li>
-      <li><%= match.min_salary %></li>
+      <li><%= match.min_salary %> dollars an hour</li>
     </ul>
   </div>
   <% end %>
