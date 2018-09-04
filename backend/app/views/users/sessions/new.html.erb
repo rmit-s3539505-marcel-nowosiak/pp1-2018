@@ -1,0 +1,34 @@
+<div style="min-height: 100%; padding-bottom: 1px;"><br><br>
+    <div class="row">
+     <div class="card horizontal z-depth-2" style="min-width: 450px; margin: auto; padding: 10px; border-radius: 15px;">
+      <h1 class="card-header text-center" style="color: #304a74;"><i class="material-icons teal-text" style="font-size: 0.75em;">fingerprint</i> Log in</h1>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in", class: "card-header btn btn-block btn-info lighten-2 ripple-effect" %>
+  </div>
+  
+  <div class="card-header text-center">
+    <%= render "users/shared/links" %>
+  </div>
+  </div>
+  </div>
+<% end %>
+

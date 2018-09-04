@@ -1,0 +1,22 @@
+ <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <div class="container">
+            <a href="/pages" class="navbar-brand text-warning">HireMe</a>            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="background-color: #304a74 !important;" id="navbarSupportedContent">
+                <div class="navbar-nav mr-auto">
+                    <span class="nav-item active"><%= link_to "Home", '#', class: "nav-link" %></span>
+                    <span class="nav-item"><%= link_to "Browse", '#', class: "nav-link" %></span>
+                    <span class="nav-item"><%= link_to "Job-Listings", '#', class: "nav-link" %></span>
+                    <span class="nav-item"><%= link_to "About Us", '#', class: "nav-link" %></span>
+                    <span class="nav-item"><%= link_to "Return", '#', class: "nav-link" %></span>
+                </div>
+                <div class="form-inline" style="list-style-type: none;">
+                     <%= link_to "Sign up", sign_up_path, class: "waves-effect waves-light btn btn-sm btn-info lighten-2" %>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--/.Navbar-->
