@@ -91,32 +91,3 @@ EmployerProfile.create(
     }
   ]
 )
-
-Match.create(
-  [
-    {
-      id: 1,
-      offered: true,
-      accepted: false,
-      application: false,
-      hunterprofile_id: 1,
-      listing_id: 1
-    },
-    {
-      id: 2,
-      offered: true,
-      accepted: false,
-      application: false,
-      hunterprofile_id: 1,
-      listing_id: 2
-    },
-    {
-      id: 3,
-      offered: true,
-      accepted: false,
-      application: false,
-      hunterprofile_id: 2,
-      listing_id: 2
-    }
-  ]
-)
