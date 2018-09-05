@@ -1,21 +1,3 @@
-<% form_for @hunter_profile do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :industry %><br />
-    <%= f.text_field :indistry %>
-  </p>
-  <h3>Skills</h3>
-  <% f.fields_for :skill do |ing| %>
-    <p>
-      <%= ing.label :skill %>
-      <%= ing.text_field :skill, :size => 50 %>
-      <%= ing.check_box :_destroy %>
-      <%= ing.label :_destroy, 'delete' %>
-    </p>
-  <% end -%>
-  <p>
-    <%= f.submit 'Add skill', :name => "add_skill" %>
-    <%= f.submit 'Delete checked skills', :name => "remove_skill" %>
-    <%= f.submit %>
-  </p>
-<% end %>
+<h1>Create/Edit Profile</h1>
+
+<%= render 'form', hunter_profile: @hunter_profile %>

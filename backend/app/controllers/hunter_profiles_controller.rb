@@ -11,7 +11,7 @@ class HunterProfilesController < ApplicationController
 
   def new
     @hunter_profile = HunterProfile.new
-    @hunter_profile.skill.build
+    #@hunter_profile.skills.build
   end
 
   def create

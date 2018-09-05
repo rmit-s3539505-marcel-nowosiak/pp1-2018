@@ -1,12 +1,82 @@
-<%= form_for @hunter_profile do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :industry %><br />
-    <%= f.text_field :industry %>
-  </p>
-  <%= f.fields_for :skill do |builder| %>
-    <%= render "skill_fields", :f =>builder %>
+<head>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        var slider = $("#money_slider").slider({
+            step: 1000,
+            range: true,
+            min: 10000,
+            max: 250000,
+            values: [15000, 250000],
+            slide: function(event, ui) {
+                $("#hunter_profile_min_salary").val(ui.values[0]);
+                $("#hunter_profile_max_salary").val(ui.values[1]);
+                $("#min").text(ui.values[0]);
+                $("#max").text(ui.values[1]);
+            }
+        });
+        $("#hunter_profile_min_salary").val(slider.slider("values")[0]);
+        $("#hunter_profile_max_salary").val(slider.slider("values")[1]);
+    });
+  </script>
+</head>
+
+<%= form_with(model: hunter_profile, local: true) do |form| %>
+  <% if hunter_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hunter_profile.errors.count, "error") %> profile not saved:</h2>
+
+      <ul>
+      <% hunter_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-  <p><%= link_to_add_skill "Add Skill", f, :skill %></p>
-  <p><%= f.submit "Create Profile" %></p>
+
+  <div class="field">
+    <%= form.label :industry %>
+    <%= form.text_field :industry, id: :hunter_profile_industry %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :hunter_profile_location %>
+  </div>
+  
+  <p>Salary</p>
+  <div class="field" id="money_slider">
+    <%= form.hidden_field :min_salary, id: :hunter_profile_min_salary %>
+    <%= form.hidden_field :max_salary, id: :hunter_profile_max_salary %>
+  </div>
+  
+  <div>
+    <p style="display:inline">Min: </p>
+    <p id="min" style="display:inline">15000</p>
+    <p style="display:inline">| | Max: </p>
+    <p id="max" style="display:inline">250000</p>
+  </div>
+  
+  <div class="field">
+    <%= form.label :hours %>
+    <%= form.select :hours, ['Full-Time','Part-Time','Casual','Contract']%>
+  </div>
+
+  <div class="field">
+    <h2>Skills</h2>
+    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
+    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
+    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
+    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
+    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+</div>
+
 <% end %>
