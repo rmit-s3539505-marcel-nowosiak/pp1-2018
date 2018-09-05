@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1
   def show
+    @listings = Listing.find(params[:id])
   end
 
   # GET /listings/new
@@ -53,6 +54,6 @@ class ListingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def listing_params
-      params.fetch(:listing, {})
+      params.permit(:title, :body, :min_salary, :max_salary, :hours)
     end
 end
