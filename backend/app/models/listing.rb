@@ -4,10 +4,8 @@ class Listing < ApplicationRecord
   # belongs_to :industry
   # belongs_to :employer
 
-  # clear the cache every time a new listing is created
-  after_save :clear_cache
-
-  def clear_cache
-    REDIS.del "categories"
+  def get_required_skills
+    # self.required_skills # some way of returning a set of skills
+    ['skill one'] # placeholder
   end
 end

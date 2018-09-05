@@ -31,27 +31,33 @@ Listing.create(
 
     {
       id: 1,
-      title: 'First listing',
-      body: 'Some more info regarding the listing',
+      title: 'Gym Manager',
+      body: 'Need someone to manage my gym',
       published: true,
       accepted: false,
-      application: false
+      application: false,
+      min_salary: 25.5,
+      hours: 'Full Time'
     },
     {
       id: 2,
-      title: 'Second listing',
-      body: 'Some more info regarding the listing',
+      title: 'C# Programmer',
+      body: 'Looking to hire a programmer who knows c#',
       published: true,
       accepted: false,
-      application: true
+      application: true,
+      min_salary: 19.2,
+      hours: 'Contract'
     },
     {
       id: 3,
-      title: 'Third listing',
-      body: 'Some more info regarding the listing',
+      title: 'Kitchen Hand',
+      body: 'Looking for an enthusiastic kitchen hand',
       published: true,
       accepted: false,
-      application: true
+      application: true,
+      min_salary: 15.2,
+      hours: 'Part Time'
     }
   ]
 )
@@ -82,35 +88,6 @@ EmployerProfile.create(
       user_id:  1,
       location: 'Melbourne CBD',
       business_name: 'RMIT University'
-    }
-  ]
-)
-
-Match.create(
-  [
-    {
-      id: 1,
-      offered: true,
-      accepted: false,
-      application: false,
-      hunterprofile_id: 1,
-      listing_id: 1
-    },
-    {
-      id: 2,
-      offered: true,
-      accepted: false,
-      application: false,
-      hunterprofile_id: 1,
-      listing_id: 2
-    },
-    {
-      id: 3,
-      offered: true,
-      accepted: false,
-      application: false,
-      hunterprofile_id: 2,
-      listing_id: 2
     }
   ]
 )
