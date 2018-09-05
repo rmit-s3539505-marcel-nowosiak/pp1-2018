@@ -5,10 +5,26 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # def is_employer?
+  def is_employer?
   #   # return true iff the employer table has a reference to this user's ID
-  #   # true if Employer.find_by(:user_id => self.id) # psuedocode
-  # end
+    if Employer.find_by(:user_id => self.id) # psuedocode
+      return true
+    else
+      return false
+    end
+  end
+  
+  def self.current
+    Thread.current[:user]
+  end
+  
+  def self.current=(user)
+    Thread.current[:user]=user
+  end
+  
+  def set_current_user
+      User.current = current_user
+  end
 
   # call the welcome_email method after a new user signs up
   def after_confirmation
