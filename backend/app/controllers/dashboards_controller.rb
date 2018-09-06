@@ -3,7 +3,9 @@ class DashboardsController < ApplicationController
   # GET /dashboards
   def index
     @user = User.find(current_user.id)
-    @listings = find_hunter_matches(
-      @user.hunter_profile.id)
+    if @user.hunter_profile
+      @listings = find_hunter_matches(
+        @user.hunter_profile.id)
+    end
   end
 end
