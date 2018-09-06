@@ -16,10 +16,16 @@
     <% else %>
       <%= render 'layouts/navigation' %>
     <% end %>
-    <%= render 'layouts/banner' %>
-
+    <% if current_user %>
     <%= yield %>
-
-  <%= render 'layouts/footer' %>
+    <% else %>
+    <%= render 'layouts/banner' %>
+    <%= yield %>
+    <% end %>
+    <% if content_for?(:footer) %>
+      <%= yield(:footer) %>
+    <% else %>
+      <%= render 'layouts/footer' %>
+    <% end %>
 </body>
 </html>
