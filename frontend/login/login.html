@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        HireMe: Search your own work quickly.:
+    </title>
+    <link href="webroot/favicon.ico" type="/image/x-icon" rel="icon"/><link href="webroot/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+    <link rel="stylesheet" href="webroot/css/bootstrap.css"/>    <link rel="stylesheet" href="webroot/css/materialize.css"/>    <link rel="stylesheet" href="webroot/css/parallax-template.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="webroot/js/html5shiv.js"></script>    <script src="webroot/js/respond.min.css.js"></script>
+    </head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <div class="container">
+            <a href="/pages" class="navbar-brand text-warning">HireMe</a>            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="background-color: #304a74 !important;" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a href="/pages" class="nav-link">Home</a></li>
+                                            <li class="nav-item"><a href="/jobs" class="nav-link">Browse</a></li>
+                        <li class="nav-item"><a href="/pages/job-listings" class="nav-link">Job-Listings</a></li>
+                        <li class="nav-item"><a href="/pages/aboutus" class="nav-link">About Us</a></li>
+                        <li class="nav-item"><a href="/pages/return" class="nav-link">Return</a></li>
+                                    </ul>
+                <ul class="form-inline" style="list-style-type: none;">
+                    <a href="/users/add" class="waves-effect waves-light btn btn-sm btn-info lighten-2">Sign up</a></ul>
+            </div>
+        </div>
+    </nav>
+    <!--/.Navbar-->
+
+    <!--Banner-->
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br><br>
+                <h1 class="header center light" style="padding-top: 40px;"><big class="text-warning">HireMe</big> Jobs Matching</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">Be your own BOSS !!!</h5>
+                </div>
+                <div class="row center">
+                    <a style="margin: auto;" href="http://materializecss.com/getting-started.html" class="btn btn-info btn-lg">Get Started</a>
+                </div>
+                <br>
+                <br>
+            </div>
+            <div class="parallax">
+                <img src="webroot/img/banner.jpg">
+            </div>
+        </div>
+    </div>
+    <!--/.Banner-->
+
+        <div style="min-height: 100%; padding-bottom: 1px;">
+        <br><br>
+<div class="row">
+    <div class="card horizontal z-depth-2" style="min-width: 450px; margin: auto; padding: 10px; border-radius: 15px;">
+        <h1 class="card-header text-center" style="color: #304a74;"><i class="material-icons teal-text" style="font-size: 0.75em;">fingerprint</i> Log In</h1>
+        <form method="post" accept-charset="utf-8" action="/users/login"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>        <div id="form-login-username" class="form-group">
+            <div class="input text required"><label for="username">Username</label><input type="text" name="username" class="form-control" id="username" required="required"/></div>            <span class="form-highlight"></span>
+            <span class="form-bar"></span>
+        </div>
+        <div id="form-login-password" class="form-group">
+            <div class="input password required"><label for="password">Password</label><input type="password" name="password" class="form-control" id="password" required="required"/></div>            <span class="form-highlight"></span>
+            <span class="form-bar"></span>
+        </div>
+        <div>
+            <button class="btn btn-block btn-info lighten-2 ripple-effect" type="submit">Log In</button>        </div>
+        <br/>
+        <p class="text-center">Forgot <a href="#">username</a> or <a href="#">password</a>?</p>
+        </form>    </div>
+</div>    </div>
+
+    <script type="text/javascript">
+                var cumsgVal = false;
+
+        function checkCUForm() {
+            var cuemail = document.getElementById('contactemail').value;
+            var cuname = document.getElementById('contactname').value;
+            var cunameEr = document.getElementById('cunameEr');
+            var cuemailEr = document.getElementById('cuemailEr');
+            var submit = document.getElementById('contactsubmit');
+
+            var filter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$/;
+            var cuemailVal = false;
+            if (cuemail.length === 0)
+                cuemailEr.style.display = 'none';
+            else {
+                if (!filter.test(cuemail)) {
+                    cuemailEr.innerHTML = 'Please enter a valid email address.'
+                    cuemailEr.style.display = '';
+                    cuemailVal = false;
+                }
+                else {
+                    cuemailEr.style.display = 'none';
+                    cuemailVal = true;
+                }
+            }
+
+            var cunameVal = false;
+            if (cuname.length === 0)
+                cunameEr.style.display = 'none';
+            else {
+                if ((/\d/g).test(cuname)) {
+                    cunameEr.innerHTML = 'Name should contain alphabet letters only.';
+                    cunameEr.style.display = '';
+                    cunameVal = false;
+                }
+                else {
+                    cunameEr.style.display = 'none';
+                    cunameVal = true;
+                }
+            }
+
+            submit.disabled = !(cumsgVal && cunameVal && cuemailVal);
+        }
+        
+        function countCUChars() {
+            var count = document.getElementById("cucount");
+            var message = document.getElementById("contactmessage").value;
+
+            if (200 - message.length == 200) {
+                cumsgVal = false;                count.style.color = 'white';
+                count.innerHTML = '200 characters left';
+            }
+            else if (200 - message.length > 0) {
+                count.innerHTML = (200 - message.length).toString().concat(' characters left');
+                count.style.color = 'white';
+                cumsgVal = true;            }
+            else {
+                count.innerHTML = '0 char left!';
+                count.style.color = 'orangered';
+                cumsgVal = false;            }
+        }
+    </script>
+
+    <footer class="page-footer center-on-small-only" style="position: relative; margin-top: -1px; bottom: 0; width: 100%; clear: both; background-color: #304a74;">
+        <!--Footer Links-->
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-lg-3 col-md-6 ml-auto" style="color: whitesmoke">
+                    <h5 class="title font-bold mt-3 mb-4">We <i class="material-icons" style="color: orangered">favorite</i> to hear from you!</h5>
+                    <p><i class="material-icons" style="color: whitesmoke">place</i> 100 Example St., Somewhere, VIC 3200</p>
+                    <p><i class="material-icons" style="color: whitesmoke">phone</i> 0432.500.500</p>
+                    <p><i class="material-icons" style="color: whitesmoke">email</i> contactadmin@hireme.com.au</p>
+                </div>
+                <!--/.First column-->
+
+                <hr class="w-100 clearfix d-sm-none">
+
+                <!--Second column-->
+                <div class="col-lg-5 col-md-6 ml-auto" style="color: whitesmoke">
+                    <h5 class="title font-bold mt-3 mb-4"><i class="material-icons" style="color: orangered">send</i> Contact Us</h5>
+                    <div class="row">
+                        <form id="contactus" class="col s12" method="post" action="/messages/add">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input name="contactemail" id="contactemail" type="email" class="validate" required onchange="checkCUForm()" value="">
+                                    <label for="contactemail">Email</label>
+                                    <p id="cuemailEr" class="small" style="color: orangered; display: none;"></p>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input name="contactname" id="contactname" type="text" class="validate" required onchange="checkCUForm()" value="">
+                                    <label for="contactname">Name</label>
+                                    <p id="cunameEr" class="small" style="color: orangered; display: none;"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea name="contactmessage" id="contactmessage" type="text" class="validate" required oninput="countCUChars()" onchange="checkCUForm()" ></textarea>
+                                    <label for="contactmessage">Message</label>
+                                    <p id="cucount" class="small">200 characters left</p>
+                                </div>
+                            </div>
+                            <button id="contactsubmit" type="submit" name="contactsubmit" disabled class="waves-effect waves-light btn btn-sm btn-info lighten-2 pull-right ">Send</button>
+                        </form>
+                    </div>
+                </div>
+                <!--/.Third column-->
+
+                <hr class="w-100 clearfix d-sm-none">
+
+                <!--Fourth column-->
+                <div class="col-lg-3 col-md-6 ml-auto" style="color: whitesmoke">
+                    <h5 class="title font-bold mt-3 mb-4"><i class="material-icons" style="color: orangered">group add</i> Follow Us On</h5>
+                    <div class="row">
+                        <div class="col s1"><i class="fa fa-facebook-square small" style="color: whitesmoke"></i> <a href="#">Facebook</a></div>
+                        <div class="col s1"><i class="fa fa-twitter-square small" style="color: whitesmoke"></i> <a href="#">Twitter</a></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col s1"><i class="fa fa-instagram small" style="color: whitesmoke"></i> <a href="#">Instagram</a></div>
+                        <div class="col s1"><i class="fa fa-google-plus-square small" style="color: whitesmoke"></i> <a href="#">Google+</a></div>
+                    </div>
+                </div>
+                <!--/.Fourth column-->
+            </div>
+        </div>
+        <!--/.Footer Links-->
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid text-center">
+                ©2018 Copyright: <a href="https://www.MDBootstrap.com"> HireMe.com.au </a>
+                --- RMIT University
+            </div>
+        </div>
+        <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+
+    <script src="webroot/js/jquery.min.js"></script>    <script src="webroot/js/bootstrap.js"></script>    <script src="webroot/js/materialize.js"></script>    <script src="webroot/js/parallax-template.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>
