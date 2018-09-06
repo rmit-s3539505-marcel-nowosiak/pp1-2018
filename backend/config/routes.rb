@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'hunter_profiles/new'
-   root 'dashboards#index'
+  # get 'hunter_profiles/new'
+  root 'dashboards#index'
+
   devise_for :users, :controllers => {
     :registrations => "users/registrations",
     :sessions => "users/sessions",
