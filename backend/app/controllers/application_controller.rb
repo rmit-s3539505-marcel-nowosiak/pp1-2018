@@ -66,8 +66,10 @@ class ApplicationController < ActionController::Base
     # convert each street address into a point
     point1, point2 = Geocoder.coordinates(loc1), Geocoder.coordinates(loc2)
     # return the distance
-    (1000 * Geocoder::Calculations.distance_between(point1, point2,
-      options = {:units => :km})).round
+    dist = (1000 * Geocoder::Calculations.distance_between(
+      point1, point2, options = {:units => :km}))
+    dist.nan? ? -1 : dist.to_i
+
   end
 
   # return a score from a hunter profile and listing
