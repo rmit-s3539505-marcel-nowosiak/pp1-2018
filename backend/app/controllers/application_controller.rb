@@ -46,19 +46,37 @@ class ApplicationController < ActionController::Base
       end
     end
     # return all the valid listings with their score
-    return @matches
+    @matches
   end
 
   # to be used to render a list of matches to a particular listing on login
   def find_listing_matches(listing_id)
+    # create an empty hashmap to render matches with scores
+    @matches = Hash.new
+
     # Find the listing that has the particular ID
     @listing = Listing.find(listing_id)
-    # find users whose preference for salary is less than the one offered
-    HunterProfile.where("
-        min_salary < ?
+
+    # find hunters whose preference for salary is less than/equal the one offered
+    @hunters = HunterProfile.where("
+      min_salary <= ?
       ",
       @listing.min_salary
     )
+    @hunter.each do |hunter|
+      # generate and store the score of the match out of 100 to render in the view
+      # as listings are only those which have matching hours and salary,
+      # we aren't concerned with listings not in this set
+
+      # only store listings with a 50% or more match
+      percentage = percentage(score(hunter, @listing), max_score(@listing))
+      if percentage > 50
+        # store the hunter with their match and return it to the view
+        @matches[hunter] = percentage.round
+      end
+    end
+    # return all the valid hunters for the listing that was queried
+    @matches
   end
 
   # return a float of the metres distance between loc1 and loc2, useful for match
