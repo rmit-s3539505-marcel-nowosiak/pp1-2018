@@ -91,9 +91,20 @@ class ApplicationController < ActionController::Base
     # increment the score if there are matching hours
     score += 25 if hunter.hours == listing.hours
     # increment score if the locations are close
-    # TODO implement properly. Ie, if less than 1km, add 25,
     #   if 1km < dist < 2km, add 20, etc
-    score += 25 if distance(hunter.location, listing.location) < 1000
+    dist = distance(hunter.location, listing.location)
+    if dist < 1000
+      score += 25
+    elsif dist < 5000
+      score += 20
+    elsif dist < 10000
+      score += 15
+    elsif dist < 15000
+      score += 10
+    elsif dist < 20000
+      score += 5
+    end
+    # need scoring based on skills
   end
 
   # return the max_score available
