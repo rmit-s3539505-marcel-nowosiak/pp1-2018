@@ -61,10 +61,13 @@ class ApplicationController < ActionController::Base
     )
   end
 
-  # return a float of the metres distance between loc1 and loc2, useful for match
-  # making based on distance. Should use google maps api
+  # returns the distance between two street addresses to the closest metre
   def distance(loc1, loc2)
-    return 1 # TODO implement method
+    # convert each street address into a point
+    point1, point2 = Geocoder.coordinates(loc1), Geocoder.coordinates(loc2)
+    # return the distance
+    (1000 * Geocoder::Calculations.distance_between(point1, point2,
+      options = {:units => :km})).round
   end
 
   # return a score from a hunter profile and listing
