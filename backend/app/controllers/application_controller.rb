@@ -7,19 +7,6 @@ class ApplicationController < ActionController::Base
   #   devise_parameter_sanitizer.for(:sign_up) {u.permit(:first_name, :last_name, :email, :password, :password_confirmation)}
   # end
 
-  # define app wide helper methods to more easily render the dashboards
-  def find_user(id)
-    User.find(id)
-  end
-
-  def find_hunter_profile(user_id)
-    HunterProfile.find_by(:user_id => user_id)
-  end
-
-  def find_emp_profile(user_id)
-    EmployerProfile.find_by(:user_id => user_id)
-  end
-
   # to be used to render a list of matches to a particular job hunter on login
   def find_hunter_matches(prof_id)
     # find the hunterprofile to match from
