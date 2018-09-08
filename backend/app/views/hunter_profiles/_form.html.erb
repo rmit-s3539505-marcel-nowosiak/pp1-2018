@@ -3,7 +3,25 @@
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+  <script>
+    $(document).ready(function(){
+       if($('#hunter_profile_industry').val() == ""){
+          $("#ski").attr('hidden','hidden');
+       }
+       else{
+          $("#ski").removeAttr('hidden');
+       }
+  
+       $('#hunter_profile_industry').change(function(){
+          if($(this).val() == ""){
+            $("#ski").attr('hidden','hidden');
+          }
+          else{
+            $("#ski").removeAttr('hidden');
+          }
+       })
+    });
+  </script>
   <script>
     $(document).ready(function() {
         var slider = $("#money_slider").slider({
@@ -40,7 +58,7 @@
 
   <div class="field">
     <%= form.label :industry %>
-    <%= form.text_field :industry, id: :hunter_profile_industry %>
+    <%= form.collection_select(:industry, Skill.select('distinct industry'), :industry, :industry, include_blank: true, :id =>'ind') %>
   </div>
 
   <div class="field">
@@ -66,8 +84,9 @@
     <%= form.select :hours, ['Full-Time','Part-Time','Casual','Contract']%>
   </div>
 
-  <div class="field">
+  <div class="field" id="ski">
     <h2>Skills</h2>
+    <%= form.collection_select(:skill1, Skill.all, :id, :name, include_blank: true) %>
     <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
     <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
     <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
