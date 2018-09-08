@@ -52,18 +52,6 @@ ActiveRecord::Schema.define(version: 2018_09_08_043914) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "matches", force: :cascade do |t|
-    t.boolean "accepted"
-    t.boolean "offered"
-    t.boolean "application"
-    t.integer "hunterprofile_id"
-    t.integer "listing_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["hunterprofile_id"], name: "index_matches_on_hunterprofile_id"
-    t.index ["listing_id"], name: "index_matches_on_listing_id"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
