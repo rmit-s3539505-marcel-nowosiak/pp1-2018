@@ -105,7 +105,7 @@ Skill.create(
       industry: 'SoftEng'
     },
     {
-      id: 3,
+      id: 7,
       name: 'C++',
       industry: 'SoftEng'
     },

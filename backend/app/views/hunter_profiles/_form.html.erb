@@ -1,6 +1,5 @@
 <head>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
-
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
@@ -86,11 +85,11 @@
 
   <div class="field" id="ski">
     <h2>Skills</h2>
-    <%= form.collection_select(:skill1, Skill.all, :id, :name, include_blank: true) %>
-    <%= form.collection_select(:skill2, Skill.all, :id, :name, include_blank: true) %>
-    <%= form.collection_select(:skill3, Skill.all, :id, :name, include_blank: true) %>
-    <%= form.collection_select(:skill4, Skill.all, :id, :name, include_blank: true) %>
-    <%= form.collection_select(:skill5, Skill.all, :id, :name, include_blank: true) %>
+    <%= form.collection_select(:skill1, Skill.all, :industry, :name, include_blank: true) %><br />
+    <%= form.collection_select(:skill2, Skill.all, :id, :name, include_blank: true) %><br />
+    <%= form.collection_select(:skill3, Skill.all, :id, :name, include_blank: true) %><br />
+    <%= form.collection_select(:skill4, Skill.all, :id, :name, include_blank: true) %><br />
+    <%= form.collection_select(:skill5, Skill.all, :id, :name, include_blank: true) %><br />
   </div>
 
   <div class="actions">
