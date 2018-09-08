@@ -87,11 +87,10 @@
   <div class="field" id="ski">
     <h2>Skills</h2>
     <%= form.collection_select(:skill1, Skill.all, :id, :name, include_blank: true) %>
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
+    <%= form.collection_select(:skill2, Skill.all, :id, :name, include_blank: true) %>
+    <%= form.collection_select(:skill3, Skill.all, :id, :name, include_blank: true) %>
+    <%= form.collection_select(:skill4, Skill.all, :id, :name, include_blank: true) %>
+    <%= form.collection_select(:skill5, Skill.all, :id, :name, include_blank: true) %>
   </div>
 
   <div class="actions">
