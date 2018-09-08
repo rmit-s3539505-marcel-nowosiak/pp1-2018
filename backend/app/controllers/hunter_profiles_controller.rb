@@ -11,7 +11,7 @@ class HunterProfilesController < ApplicationController
 
   def new
     @hunter_profile = HunterProfile.new
-    #@hunter_profile.skills.build
+    @skills = Skill.all.map{|u| { id: u.id, name: u.name, industry: u.industry}}
   end
 
   def create
