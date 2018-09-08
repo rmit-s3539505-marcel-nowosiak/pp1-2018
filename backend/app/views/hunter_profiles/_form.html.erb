@@ -9,6 +9,10 @@
        }
        else{
           $("#ski").removeAttr('hidden');
+          var filter = $('#hunter_profile_industry').val();
+          $(".skillet > option").show();
+          $(".skillet > option:not([value=\""+filter+"\"])").hide();
+          $(".skillet").val($('.skillet>option:visible:first').val());
        }
   
        $('#hunter_profile_industry').change(function(){
@@ -16,7 +20,11 @@
             $("#ski").attr('hidden','hidden');
           }
           else{
+            var filter = $('#hunter_profile_industry').val();
             $("#ski").removeAttr('hidden');
+            $(".skillet > option").show();
+            $(".skillet > option:not([value=\""+filter+"\"])").hide();
+            $(".skillet").val($('#.skillet>option:visible:first').val());
           }
        })
     });
@@ -85,11 +93,11 @@
 
   <div class="field" id="ski">
     <h2>Skills</h2>
-    <%= form.collection_select(:skill1, Skill.all, :industry, :name, include_blank: true) %><br />
-    <%= form.collection_select(:skill2, Skill.all, :id, :name, include_blank: true) %><br />
-    <%= form.collection_select(:skill3, Skill.all, :id, :name, include_blank: true) %><br />
-    <%= form.collection_select(:skill4, Skill.all, :id, :name, include_blank: true) %><br />
-    <%= form.collection_select(:skill5, Skill.all, :id, :name, include_blank: true) %><br />
+    <%= form.collection_select(:skill1, Skill.all, :industry, :name, {:include_blank => true}, {:class => 'skillet'}) %><br />
+    <%= form.collection_select(:skill2, Skill.all, :industry, :name, {:include_blank => true}, {:class => 'skillet'}) %><br />
+    <%= form.collection_select(:skill3, Skill.all, :industry, :name, {:include_blank => true}, {:class => 'skillet'}) %><br />
+    <%= form.collection_select(:skill4, Skill.all, :industry, :name, {:include_blank => true}, {:class => 'skillet'}) %><br />
+    <%= form.collection_select(:skill5, Skill.all, :industry, :name, {:include_blank => true}, {:class => 'skillet'}) %><br />
   </div>
 
   <div class="actions">
