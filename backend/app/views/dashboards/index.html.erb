@@ -3,18 +3,22 @@
 <div class="panel">
   <% if @user.first_name %>
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
-      <% if @matches %>
-        <% @matches.each do |match, score| %>
-        <div class="listing-details">
-          <li><%= match.title %></li>
-          <li><%= score %>% match</li>
-          <ul>
-            <li><%= match.body %></li>
-            <li><%= match.min_salary %> dollars an hour</li>
-          </ul>
+
+    <div class="listings">
+    <%= @listings.each do |listing,hunter| %>
+      <!-- score for the hunter maps to hunter[1] -->
+      <div class="detailed-listing">
+        <p><%= listing.title %></p>
+        <p><%= hunter[1] %>% match</p>
+        <!-- TODO make button toggle visibility of the detailed hunter info -->
+        <button>Show More</button>
+        <div class="hunter-details">
+          <p><%= hunter[0].user.first_name + ' ' + hunter[0].user.last_name %></p>
         </div>
-        <% end %>
-      <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <% else %>
     <h1>Create your profile</h1>
     <!-- Render the profile creation panel etc -->

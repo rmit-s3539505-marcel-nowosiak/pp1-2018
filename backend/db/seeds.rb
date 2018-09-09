@@ -80,7 +80,7 @@ listings = Listing.create(
       application: false,
       min_salary: 25.5,
       hours: 'Full Time',
-      employer_profile: employers.first
+      employer_profile: employers.second
     },
     {
       title: 'C# Programmer',
@@ -88,9 +88,9 @@ listings = Listing.create(
       published: true,
       accepted: false,
       application: true,
-      min_salary: 19.2,
+      min_salary: 38.2,
       hours: 'Contract',
-      employer_profile: employers.second
+      employer_profile: employers.first
     },
     {
       title: 'Kitchen Hand',

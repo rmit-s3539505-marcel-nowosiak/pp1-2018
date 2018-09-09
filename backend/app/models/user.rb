@@ -9,10 +9,10 @@ class User < ApplicationRecord
 
   def is_employer?
   #   # return true iff the employer table has a reference to this user's ID
-    if Employer.find_by(:user_id => self.id) # psuedocode
-      return true
+    if EmployerProfile.find_by(:user_id => self.id) # psuedocode
+      true
     else
-      return false
+      false
     end
   end
 

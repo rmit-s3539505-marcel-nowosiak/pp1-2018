@@ -40,17 +40,16 @@ class ApplicationController < ActionController::Base
   def find_listing_matches(listing_id)
     # create an empty hashmap to render matches with scores
     @matches = Hash.new
-
     # Find the listing that has the particular ID
     @listing = Listing.find(listing_id)
-
     # find hunters whose preference for salary is less than/equal the one offered
     @hunters = HunterProfile.where("
       min_salary <= ?
       ",
       @listing.min_salary
     )
-    @hunter.each do |hunter|
+
+    @hunters.each do |hunter|
       # generate and store the score of the match out of 100 to render in the view
       # as listings are only those which have matching hours and salary,
       # we aren't concerned with listings not in this set
