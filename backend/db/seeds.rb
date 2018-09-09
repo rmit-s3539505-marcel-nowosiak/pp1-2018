@@ -104,3 +104,28 @@ listings = Listing.create(
     }
   ]
 )
+
+Skill.create(
+  [
+    {
+      id: 1,
+      name: 'C',
+      industry: 'SoftEng'
+    },
+    {
+      id: 2,
+      name: 'Java',
+      industry: 'SoftEng'
+    },
+    {
+      id: 7,
+      name: 'C++',
+      industry: 'SoftEng'
+    },
+    {
+      id: 4,
+      name: 'Ruby on Rails',
+      industry: 'WebDev'
+    }
+  ]
+)

@@ -1,9 +1,34 @@
 <head>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
-
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+  <script>
+    $(document).ready(function(){
+       if($('#hunter_profile_industry').val() == ""){
+          $("#ski").attr('hidden','hidden');
+       }
+       else{
+          $("#ski").removeAttr('hidden');
+          var filter = $('#hunter_profile_industry').val();
+          $(".skill_class option").show();
+          $(".skill_class option[skill_ind]:not([skill_ind=\""+filter+"\"])").hide();
+          $(".skill_class").val($('.skill_class option:visible:first').val());
+       }
+  
+       $('#hunter_profile_industry').change(function(){
+          if($(this).val() == ""){
+            $("#ski").attr('hidden','hidden');
+          }
+          else{
+            var filter = $('#hunter_profile_industry').val();
+            $("#ski").removeAttr('hidden');
+            $(".skill_class option").show();
+            $(".skill_class option[skill_ind]:not([skill_ind=\""+filter+"\"])").hide();
+            $(".skill_class").val($('.skill_class option:visible:first').val());
+          }
+       })
+    });
+  </script>
   <script>
     $(document).ready(function() {
         var slider = $("#money_slider").slider({
@@ -42,7 +67,7 @@
 
   <div class="field">
     <%= form.label :industry %>
-    <%= form.text_field :industry, id: :hunter_profile_industry %>
+    <%= form.collection_select(:industry, Skill.select('distinct industry'), :industry, :industry, include_blank: true, :id =>'ind') %>
   </div>
 
   <div class="field">
@@ -68,13 +93,13 @@
     <%= form.select :hours, ['Full-Time','Part-Time','Casual','Contract']%>
   </div>
 
-  <div class="field">
+  <div class="field" id="ski">
     <h2>Skills</h2>
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
-    <%= form.text_field :'skills[]', id: :hunter_profile_skill %><br />
+    <%= form.select :skill1, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br />
+    <%= form.select :skill2, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br /> 
+    <%= form.select :skill3, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br />
+    <%= form.select :skill4, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br />
+    <%= form.select :skill5, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br />
   </div>
 
   <div class="actions">
