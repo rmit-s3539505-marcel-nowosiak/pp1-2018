@@ -9,29 +9,29 @@ users = User.create(
   [
     {
       email: 'seeded_user@gmail.com',
-      first_name: 'User',
+      first_name: 'Johnny',
       last_name: 'Userson',
       password: 'Password1!',
       password_confirmation: 'Password1!'
     },
     {
       email: 'seeded_user2@gmail.com',
-      first_name: 'User2',
-      last_name: 'Userson',
+      first_name: 'Timmy',
+      last_name: 'Realuser',
       password: 'Password1!',
       password_confirmation: 'Password1!'
     },
     {
       email: 'legitemployer@gmail.com',
-      first_name: 'User2',
-      last_name: 'Userson',
+      first_name: 'Joey',
+      last_name: 'Gymowner',
       password: 'Password1!',
       password_confirmation: 'Password1!'
     },
     {
       email: 'legitemployer2@gmail.com',
-      first_name: 'User2',
-      last_name: 'Userson',
+      first_name: 'Mike',
+      last_name: 'Usersonson',
       password: 'Password1!',
       password_confirmation: 'Password1!'
     }

@@ -73,7 +73,6 @@ class ApplicationController < ActionController::Base
     dist = (1000 * Geocoder::Calculations.distance_between(
       point1, point2, options = {:units => :km}))
     dist.nan? ? -1 : dist.to_i
-
   end
 
   # return a score from a hunter profile and listing
@@ -95,7 +94,8 @@ class ApplicationController < ActionController::Base
     elsif dist < 20000
       score += 5
     end
-    # need scoring based on skills
+    # increment scoring based on skills
+
   end
 
   # return the max_score available
