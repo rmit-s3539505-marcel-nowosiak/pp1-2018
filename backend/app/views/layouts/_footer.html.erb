@@ -1,5 +1,16 @@
-
- <footer class="page-footer center-on-small-only" style="position: relative; margin-top: -1px; bottom: 0; width: 100%; clear: both; background-color: #304a74;">
+<footer class="page-footer center-on-small-only" style="position: relative; margin-top: -1px; bottom: 0; width: 100%; clear: both; background-color: #304a74;">
+<%if current_user %>
+  <!--Copyright-->
+  <div class="footer-copyright">
+      <div class="container-fluid text-center">
+          ©2018 Copyright: <a href="https://www.MDBootstrap.com"> HireMe.com.au </a>
+          --- RMIT University
+      </div>
+  </div>
+<!--/.Copyright-->
+</footer>
+<!--/.Footer-->
+<% else %>
         <!--Footer Links-->
         <div class="container-fluid">
             <div class="row">
@@ -75,3 +86,4 @@
         <!--/.Copyright-->
     </footer>
     <!--/.Footer-->
+  <% end %>

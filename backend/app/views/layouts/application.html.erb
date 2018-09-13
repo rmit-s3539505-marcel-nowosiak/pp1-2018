@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TestApp</title>
+    <title>HireMe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta charset="utf-8"/>    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +12,20 @@
 
   <body>
     <% if content_for?(:navbar) %>
-    <%= yield(:navbar) %>
+      <%= yield(:navbar) %>
     <% else %>
-       <%= render 'layouts/navigation' %>
+      <%= render 'layouts/navigation' %>
     <% end %>
-     <%= render 'layouts/banner' %>
- 
+    <% if current_user %>
     <%= yield %>
-
-  <%= render 'layouts/footer' %>
+    <% else %>
+    <%= render 'layouts/banner' %>
+    <%= yield %>
+    <% end %>
+    <% if content_for?(:footer) %>
+      <%= yield(:footer) %>
+    <% else %>
+      <%= render 'layouts/footer' %>
+    <% end %>
 </body>
 </html>
