@@ -100,7 +100,7 @@ class ApplicationController < ActionController::Base
 
   # return the max_score available
   def max_score(listing)
-    15 * listing.get_required_skills.count + # 15 for each skill
+    10 * listing.skills.count + # 10 for each skill
     25 +  # hours
     25    # location; Smaller the distance, higher the score
   end

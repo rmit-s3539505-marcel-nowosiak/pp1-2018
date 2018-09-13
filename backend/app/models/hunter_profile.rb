@@ -3,5 +3,7 @@ class HunterProfile < ApplicationRecord
   has_many :skills, :through => :hunter_profiles_skills
   accepts_nested_attributes_for :skills, :allow_destroy => true
 
-  has_and_belongs_to_many :listings
+  has_and_belongs_to_many :listings, :through => :hunter_profiles_listings
+
+
 end
