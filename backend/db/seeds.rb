@@ -116,7 +116,8 @@ listings = Listing.create(
       application: true,
       min_salary: 38.2,
       hours: 'Contract',
-      employer_profile: employers.first
+      employer_profile: employers.first,
+      skills: []
     },
     {
       title: 'Kitchen Hand',
@@ -126,7 +127,8 @@ listings = Listing.create(
       application: true,
       min_salary: 15.2,
       hours: 'Part Time',
-      employer_profile: employers.first
+      employer_profile: employers.first,
+      skills: []
     }
   ]
 )
