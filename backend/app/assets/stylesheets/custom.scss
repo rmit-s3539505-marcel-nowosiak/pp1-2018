@@ -1,8 +1,114 @@
-@import "style";
-@import "fontawesome";
+@import "bootstrap-sprockets";
 @import "bootstrap";
-@import "materialize";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "parallax-template";
-@import "animate";
+@import "bootstrap/theme";
+
+
+/* alerts */
+
+.alert-alert {
+    @extend .alert-warning;
+}
+
+.alert-notice {
+    @extend .alert-info;
+}
+
+
+/* universal */
+
+body {
+    padding-top: none;
+}
+
+section {
+    overflow: auto;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.center {
+    text-align:center;
+}
+
+.center h1 {
+    margin-bottom:10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height:1;
+}
+
+h1 {
+    font-size:3em;
+    letter-spacing:-2px;
+    margin-bottom:30px;
+    text-align:center;
+}
+
+h2 {
+     font-size:1.2em;
+    letter-spacing:-1px;
+    margin-bottom:30px;
+    text-align:center;
+    font-weight:normal;
+    color: #777;
+}
+
+p {
+    font-size:1.1px;
+    line-height:1.7px;
+}
+
+
+/* navigation */
+
+nav {
+    width: 100%;
+}
+
+nav li {
+    font-size:1.2em !important;
+}
+
+.btn-xl {
+    padding:10px 40px;
+    font-size:20px;
+    border-radius:10px;
+}
+
+/* footer */
+
+footer {
+    margin-top:45px;
+    padding-top:5px;
+    border-top:1px solid #eaeaea;
+    color: #777;
+}
+
+footer a {
+    color:#555;
+}
+
+footer a:hover {
+    color:#222;
+}
+
+footer small {
+    text-align: center;
+}
+
+footer ul {
+    float:right;
+    list-style:none;
+}
+
+footer ul li {
+    float:left;
+    margin-left:15px;
+}
+
+
+
 

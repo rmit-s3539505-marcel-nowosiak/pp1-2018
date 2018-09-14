@@ -12,16 +12,15 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
-//= require bootstrap
-//= require colored
-//= require materialize
-//= require html5shiv
-//= require parallax-template
-//= require respond.min
-//= require_tree .
+//= require jquery.turbolinks
 //= require_jquery-ui
+//= require_jquery-ujs
+//= require bootstrap
+//= require bootstrap/dropdown
+//= require turbolinks
+//= require_tree .
+
 
 $(document).ready(function() {
     var slider = $("#money_slider").slider({
