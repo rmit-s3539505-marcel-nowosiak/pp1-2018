@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 2018_09_08_043914) do
     t.index ["user_id"], name: "index_hunter_profiles_on_user_id"
   end
 
+  create_table "hunter_profiles_listings", id: false, force: :cascade do |t|
+    t.integer "listing_id", null: false
+    t.integer "hunter_profile_id", null: false
+    t.index ["hunter_profile_id", "listing_id"], name: "index_hunter_profiles_listings_on_profile_id_and_listing_id"
+  end
+
   create_table "hunter_profiles_skills", id: false, force: :cascade do |t|
     t.integer "hunter_profile_id", null: false
     t.integer "skill_id", null: false
@@ -50,6 +56,8 @@ ActiveRecord::Schema.define(version: 2018_09_08_043914) do
     t.string "hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "employer_profile_id"
+    t.index ["employer_profile_id"], name: "index_listings_on_employer_profile_id"
   end
 
   create_table "roles", force: :cascade do |t|
