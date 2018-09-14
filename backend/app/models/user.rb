@@ -5,14 +5,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable
 
   def is_employer?
-  #   # return true iff the employer table has a reference to this user's ID
-    if EmployerProfile.find_by(:user_id => self.id) # psuedocode
-      true
-    else
-      false
+    #   # return true iff the employer table has a reference to this user's ID
+    if current_user
+      if current_user.employer_profile
+        true
+      end
     end
   end
 
@@ -25,13 +25,13 @@ class User < ApplicationRecord
   end
 
   def set_current_user
-      User.current = current_user
+    User.current = current_user
   end
 
   # call the welcome_email method after a new user signs up
   def after_confirmation
-    welcome_email
-    queue_matches
+    # welcome_email
+    # queue_matches
   end
 
   private
