@@ -16,8 +16,9 @@ class DashboardsController < ApplicationController
         end
       end
     else
-      # otherwise find all of the matches for a hunter_profile
-      
+      # otherwise find all of the matches for a hunter_profile from the join
+      # table between listings and hunters
+      @listings = @user.hunter_profile.listings unless @user.nil?
     end
     @listings
   end

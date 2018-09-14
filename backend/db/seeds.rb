@@ -70,41 +70,6 @@ employers = EmployerProfile.create(
   ]
 )
 
-listings = Listing.create(
-  [
-    {
-      title: 'Gym Manager',
-      body: 'Need someone to manage my gym',
-      published: true,
-      accepted: false,
-      application: false,
-      min_salary: 25.5,
-      hours: 'Full Time',
-      employer_profile: employers.second
-    },
-    {
-      title: 'C# Programmer',
-      body: 'Looking to hire a programmer who knows c#',
-      published: true,
-      accepted: false,
-      application: true,
-      min_salary: 38.2,
-      hours: 'Contract',
-      employer_profile: employers.first
-    },
-    {
-      title: 'Kitchen Hand',
-      body: 'Looking for an enthusiastic kitchen hand',
-      published: true,
-      accepted: false,
-      application: true,
-      min_salary: 15.2,
-      hours: 'Part Time',
-      employer_profile: employers.first
-    }
-  ]
-)
-
 Skill.create(
   [
     {
@@ -126,6 +91,44 @@ Skill.create(
       id: 4,
       name: 'Ruby on Rails',
       industry: 'WebDev'
+    }
+  ]
+)
+
+listings = Listing.create(
+  [
+    {
+      title: 'Gym Manager',
+      body: 'Need someone to manage my gym',
+      published: true,
+      accepted: false,
+      application: false,
+      min_salary: 25.5,
+      hours: 'Full Time',
+      employer_profile: employers.second,
+      skills: [Skill.first, Skill.second]
+    },
+    {
+      title: 'C# Programmer',
+      body: 'Looking to hire a programmer who knows c#',
+      published: true,
+      accepted: false,
+      application: true,
+      min_salary: 38.2,
+      hours: 'Contract',
+      employer_profile: employers.first,
+      skills: []
+    },
+    {
+      title: 'Kitchen Hand',
+      body: 'Looking for an enthusiastic kitchen hand',
+      published: true,
+      accepted: false,
+      application: true,
+      min_salary: 15.2,
+      hours: 'Part Time',
+      employer_profile: employers.first,
+      skills: []
     }
   ]
 )
