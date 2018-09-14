@@ -9,10 +9,8 @@ class User < ApplicationRecord
 
   def is_employer?
     #   # return true iff the employer table has a reference to this user's ID
-    if current_user
-      if current_user.employer_profile
-        true
-      end
+    if User.find(self.id).employer_profile
+      true
     end
   end
 
@@ -20,9 +18,9 @@ class User < ApplicationRecord
     Thread.current[:user]
   end
 
-  def self.current=(user)
-    Thread.current[:user]=user
-  end
+  # def self.current=(user)
+  #   Thread.current[:user]=user
+  # end
 
   def set_current_user
     User.current = current_user

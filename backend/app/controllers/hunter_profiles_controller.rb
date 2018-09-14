@@ -24,6 +24,10 @@ class HunterProfilesController < ApplicationController
   def update
   end
 
+  def offer
+    
+  end
+
   def destroy
     @hunter_profile = hunter_profile.find(params[:id])
     @hunter_profile.destroy
