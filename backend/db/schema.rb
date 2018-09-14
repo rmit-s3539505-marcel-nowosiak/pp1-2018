@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_05_122801) do
+ActiveRecord::Schema.define(version: 2018_09_12_163636) do
 
   create_table "employer_profiles", force: :cascade do |t|
     t.integer "user_id"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 2018_09_05_122801) do
     t.index ["user_id"], name: "index_hunter_profiles_on_user_id"
   end
 
+  create_table "hunter_profiles_listings", id: false, force: :cascade do |t|
+    t.integer "listing_id", null: false
+    t.integer "hunter_profile_id", null: false
+    t.index ["hunter_profile_id", "listing_id"], name: "index_hunter_profiles_listings_on_profile_id_and_listing_id"
+  end
+
   create_table "hunter_profiles_skills", id: false, force: :cascade do |t|
     t.integer "hunter_profile_id", null: false
     t.integer "skill_id", null: false
@@ -50,6 +56,13 @@ ActiveRecord::Schema.define(version: 2018_09_05_122801) do
     t.string "hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "employer_profile_id"
+    t.index ["employer_profile_id"], name: "index_listings_on_employer_profile_id"
+  end
+
+  create_table "listings_skills", id: false, force: :cascade do |t|
+    t.integer "listing_id", null: false
+    t.integer "skill_id", null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -67,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_09_05_122801) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "industry"
   end
 
   create_table "users", force: :cascade do |t|
