@@ -14,6 +14,10 @@ class User < ApplicationRecord
     end
   end
 
+  def has_profile?
+    true if self.hunter_profile or self.employer_profile
+  end
+
   def self.current
     Thread.current[:user]
   end

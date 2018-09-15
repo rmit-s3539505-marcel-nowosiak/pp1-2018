@@ -2,6 +2,13 @@ class DashboardsController < ApplicationController
   before_action :require_login
   # GET /dashboards
   def index
+    # return all the listings if the user has a profile already
+    if current_user.has_profile?
+      @listings = get_listings
+    end
+  end
+
+  def get_listings
     @listings = Hash.new
     @user = User.find(current_user.id)
     if @user.is_employer?
