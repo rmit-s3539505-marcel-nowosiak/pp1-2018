@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
       score += 5
     end
     # increment scoring based on skills
-
+    
   end
 
   # return the max_score available

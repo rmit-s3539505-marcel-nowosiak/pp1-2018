@@ -15,14 +15,17 @@
           <div class="detailed-listing">
             <p><%= listing.title %></p>
             <p><%= hunters[1] %>% match</p>
-            <!-- TODO make button toggle visibility of the detailed hunter info -->
-            <div class="hunter-details">
-              <!-- Render this on button press -->
-              <p><%= hunters[0].user.first_name + ' ' + hunters[0].user.last_name %></p>
-              <!-- TODO add form for creating a link between a hunter_profile
-              and listing -->
-              
-            </div>
+            <!-- TODO make a button to toggle visibility of the detailed hunter info -->
+            <h5>Matches for this listing</h5>
+            <%= hunters.each do |h| %>
+              <div class="hunter-details">
+                <!-- Render this on button press -->
+                <p><%= hunters[0].user.first_name + ' ' + hunters[0].user.last_name %></p>
+                <!-- TODO add form for creating a link between a hunter_profile
+                and listing -->
+
+              </div>
+            <% end %>
           </div>
         <% end %>
       <% else %> <!-- otherwise the user is a hunter -->
