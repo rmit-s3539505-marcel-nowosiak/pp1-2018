@@ -1,77 +1,10 @@
 
- <footer class="page-footer center-on-small-only" style="position: relative; margin-top: -1px; bottom: 0; width: 100%; clear: both; background-color: #304a74;">
-        <!--Footer Links-->
-        <div class="container-fluid">
-            <div class="row">
-
-                <!--First column-->
-                <div class="col-lg-3 col-md-6 ml-auto" style="color: whitesmoke">
-                    <h5 class="title font-bold mt-3 mb-4">We <i class="material-icons" style="color: orangered">favorite</i> to hear from you!</h5>
-                    <p><i class="material-icons" style="color: whitesmoke">place</i> 100 Example St., Somewhere, VIC 3200</p>
-                    <p><i class="material-icons" style="color: whitesmoke">phone</i> 0432.500.500</p>
-                    <p><i class="material-icons" style="color: whitesmoke">email</i> contactadmin@hireme.com.au</p>
-                </div>
-                <!--/.First column-->
-
-                <hr class="w-100 clearfix d-sm-none">
-
-                <!--Second column-->
-                <div class="col-lg-5 col-md-6 ml-auto" style="color: whitesmoke">
-                    <h5 class="title font-bold mt-3 mb-4"><i class="material-icons" style="color: orangered">send</i> Contact Us</h5>
-                    <div class="row">
-                        <form id="contactus" class="col s12" method="post" action="/messages/add">
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input name="contactemail" id="contactemail" type="email" class="validate" required onchange="checkCUForm()" value="">
-                                    <label for="contactemail">Email</label>
-                                    <p id="cuemailEr" class="small" style="color: orangered; display: none;"></p>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input name="contactname" id="contactname" type="text" class="validate" required onchange="checkCUForm()" value="">
-                                    <label for="contactname">Name</label>
-                                    <p id="cunameEr" class="small" style="color: orangered; display: none;"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea name="contactmessage" id="contactmessage" type="text" class="validate" required oninput="countCUChars()" onchange="checkCUForm()" ></textarea>
-                                    <label for="contactmessage">Message</label>
-                                    <p id="cucount" class="small">200 characters left</p>
-                                </div>
-                            </div>
-                            <button id="contactsubmit" type="submit" name="contactsubmit" disabled class="waves-effect waves-light btn btn-sm btn-info lighten-2 pull-right ">Send</button>
-                        </form>
-                    </div>
-                </div>
-                <!--/.Third column-->
-
-                <hr class="w-100 clearfix d-sm-none">
-
-                <!--Fourth column-->
-                <div class="col-lg-3 col-md-6 ml-auto" style="color: whitesmoke">
-                    <h5 class="title font-bold mt-3 mb-4"><i class="material-icons" style="color: orangered">group add</i> Follow Us On</h5>
-                    <div class="row">
-                        <div class="col s1"><i class="fa fa-facebook-square small" style="color: whitesmoke"></i> <a href="#">Facebook</a></div>
-                        <div class="col s1"><i class="fa fa-twitter-square small" style="color: whitesmoke"></i> <a href="#">Twitter</a></div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col s1"><i class="fa fa-instagram small" style="color: whitesmoke"></i> <a href="#">Instagram</a></div>
-                        <div class="col s1"><i class="fa fa-google-plus-square small" style="color: whitesmoke"></i> <a href="#">Google+</a></div>
-                    </div>
-                </div>
-                <!--/.Fourth column-->
-            </div>
+ <footer class="navbar fixed-bottom navbar-dark navbar-inverse">
+   
+         <!--Copyright-->
+        <div class="footer-copyright my-2 text-center">
+                ©2018 Copyright: <%= link_to 'HireMe', root_path %> --- RMIT University
         </div>
-        <!--/.Footer Links-->
 
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <div class="container-fluid text-center">
-                ©2018 Copyright: <a href="https://www.MDBootstrap.com"> HireMe.com.au </a>
-                --- RMIT University
-            </div>
-        </div>
-        <!--/.Copyright-->
     </footer>
-    <!--/.Footer-->
+    

@@ -50,17 +50,19 @@
   </script>
 </head>
 
-<%= form_with(model: hunter_profile, local: true) do |form| %>
-  <% if hunter_profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(hunter_profile.errors.count, "error") %> profile not saved:</h2>
+<%= form_with(model: @hunter_profile, local: true) do |form| %>
+  <% if @hunter_profile %>
+    <% if @hunter_profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@hunter_profile.errors.count, "error") %> profile not saved:</h2>
 
-      <ul>
-      <% hunter_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+        <ul>
+        <% @hunter_profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 
   <div class="field">
@@ -72,20 +74,20 @@
     <%= form.label :location %>
     <%= form.text_field :location, id: :hunter_profile_location %>
   </div>
-  
+
   <p>Salary</p>
   <div class="field" id="money_slider">
     <%= form.hidden_field :min_salary, id: :hunter_profile_min_salary %>
     <%= form.hidden_field :max_salary, id: :hunter_profile_max_salary %>
   </div>
-  
+
   <div>
     <p style="display:inline">Min: </p>
     <p id="min" style="display:inline">15</p>
     <p style="display:inline">| | Max: </p>
     <p id="max" style="display:inline">250</p>
   </div>
-  
+
   <div class="field">
     <%= form.label :hours %>
     <%= form.select :hours, ['Full-Time','Part-Time','Casual','Contract']%>

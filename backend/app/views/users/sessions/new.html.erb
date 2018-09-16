@@ -1,17 +1,18 @@
 <div style="min-height: 100%; padding-bottom: 1px;"><br><br>
     <div class="row">
-     <div class="card horizontal z-depth-2" style="min-width: 450px; margin: auto; padding: 10px; border-radius: 15px;">
-      <h1 class="card-header text-center" style="color: #304a74;"><i class="material-icons teal-text" style="font-size: 0.75em;">fingerprint</i> Log in</h1>
+     <div class="card horizontal z-depth-2" style="min-width: 650px; margin: auto; padding: 10px; border-radius: 15px;">
+      <h1 class="card-header text-center" style="color: #304a74;">Log In</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -22,7 +23,7 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in", class: "card-header btn btn-block btn-info lighten-2 ripple-effect" %>
+    <%= f.submit "Log in", class: "btn btn-primary btn-block btn-lg" %>
   </div>
   
   <div class="card-header text-center">

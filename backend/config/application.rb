@@ -35,8 +35,8 @@ module Backend
     config.middleware.use ActionDispatch::Flash
 
     # use sidekiq as our queing Backend
-    config.active_job.queue_name_prefix = Rails.env
-    config.active_job.queue_adapter = :sidekiq
+    # config.active_job.queue_name_prefix = Rails.env
+    # config.active_job.queue_adapter = :sidekiq
 
     config.generators do |g|
       g.test_framework :rspec
