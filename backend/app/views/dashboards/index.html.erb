@@ -3,25 +3,16 @@
 
 <div class="jumbotron">
 <div class="panel">
-  <% if @user %>
-    <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
-
-    <div class="listings">
-      <!-- If an employer has logged in then render each listing with
-      each matched hunter -->
-      <% if @user.is_employer? %>
-        <!-- Render the partial for the listing matches -->
-        <%= render @user.employer_profile.listings %>
-      <% else %> <!-- otherwise the user is a hunter -->
-        <%= %>
-      <% end %>
-    </div>
-    <!-- otherwise render the profile creation view -->
+  <% if @user.first_name %>
+  <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
+  <% if @listings %>
+  <%= render 'listings', :object => @listings %>
+  <% end %>
   <% else %>
     <h1>Create your profile</h1>
     <!-- Render the profile creation panel etc -->
     <%=
-    #  render 'hunter_profiles/form' 
+    #  render 'hunter_profiles/form'
     %>
   <% end %>
 </div>

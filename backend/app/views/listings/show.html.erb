@@ -1,13 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Link:</strong>
+  <strong>Title:</strong>
   <%= @listings.title %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>Description:</strong>
   <%= @listings.body %>
+</p>
+
+<p>
+  <strong>Min Salary:</strong>
+  <%= @listings.min_salary %>
+</p>
+
+<p>
+  <strong>Max Salary:</strong>
+  <%= @listings.max_salary %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @listings.location %>
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
