@@ -1,0 +1,4 @@
+<h1>Create/Edit Profile</h1>
+
+<%= render 'form', hunter_profile: @hunter_profile %>
+<%= button_to "Delete hunter profile", @hunter_profile, :method => :delete, data: {confirm: 'Permanently delete profile?'} %>

@@ -12,6 +12,7 @@
           var filter = $('#hunter_profile_industry').val();
           $(".skill_class option").show();
           $(".skill_class option[skill_ind]:not([skill_ind=\""+filter+"\"])").hide();
+          $(".skill_class option[selected=selected])").select();
           $(".skill_class").val($('.skill_class option:visible:first').val());
        }
   
@@ -32,11 +33,11 @@
   <script>
     $(document).ready(function() {
         var slider = $("#money_slider").slider({
-            step: 1000,
+            step: 5,
             range: true,
-            min: 10000,
-            max: 250000,
-            values: [15000, 250000],
+            min: 10,
+            max: 250,
+            values: [15, 250],
             slide: function(event, ui) {
                 $("#hunter_profile_min_salary").val(ui.values[0]);
                 $("#hunter_profile_max_salary").val(ui.values[1]);
@@ -83,9 +84,9 @@
 
   <div>
     <p style="display:inline">Min: </p>
-    <p id="min" style="display:inline">15000</p>
+    <p id="min" style="display:inline">15</p>
     <p style="display:inline">| | Max: </p>
-    <p id="max" style="display:inline">250000</p>
+    <p id="max" style="display:inline">250</p>
   </div>
 
   <div class="field">
@@ -95,15 +96,15 @@
 
   <div class="field" id="ski">
     <h2>Skills</h2>
-    <%= form.select :skill1, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br />
-    <%= form.select :skill2, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br /> 
-    <%= form.select :skill3, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br />
-    <%= form.select :skill4, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br />
-    <%= form.select :skill5, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {}, {:class => 'skill_class'} %><br />
+    <%= form.select :skill1, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true, :selected => @hunter_profile.skill1}, {:class => 'skill_class'} %><br />
+    <%= form.select :skill2, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br /> 
+    <%= form.select :skill3, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select :skill4, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select :skill5, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
   </div>
 
   <div class="actions">
     <%= form.submit %>
-</div>
+  </div>
 
 <% end %>
