@@ -94,12 +94,18 @@ class ApplicationController < ActionController::Base
     elsif dist < 20000
       score += 5
     end
-    # increment scoring based on skills
-
+    # increment scoring based on skills that match
+    # TODO make this matching take into account
+    # => if a listing has < 5 skills required.
+    # => Skills should always account for 50% of the score
+    score += (hunter.skills & listing.skills).count * 10
   end
 
   # return the max_score available
   def max_score(listing)
+    # TODO make this matching take into account
+    # => if a listing has < 5 skills required.
+    # => Skills should always account for 50% of the score
     10 * listing.skills.count + # 10 for each skill
     25 +  # hours
     25    # location; Smaller the distance, higher the score

@@ -9,13 +9,11 @@ class User < ApplicationRecord
 
   def is_employer?
     #   # return true iff the employer table has a reference to this user's ID
-    if current_user
-      if current_user.employer_profile
-        true
-      end
+    if User.find(self.id).employer_profile
+      true
     end
   end
-
+  
   def self.current
     Thread.current[:user]
   end
