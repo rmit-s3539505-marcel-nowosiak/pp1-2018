@@ -6,19 +6,14 @@
   <% if @user.first_name %>
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
     <% if @matches %>
-    <tbody>
-      <% @matches.each do |listings| %>
-        <tr>
-          <td><%= listings[0].hours %></td><br>
-          <td><%= listings[0].title %></td><br>
-          <td><%= listings[0].location %></td><br>
-          <%= @matches[listings[0]].each do |hunter| %>
-            <%= hunter.user.email %><br>
-            <%= hunter.user.first_name + ' ' + hunter.user.last_name %><br>
+      <%= @matches.each do |listings| %>
+        <%= listings.each do |listing| %>
+          <%= listing.title %>
+          <%= @matches[listing].each do |hunter| %>
+            
           <% end %>
-        </tr><br>
+        <% end %>
       <% end %>
-    </tbody>
     <% end %>
   <% else %>
     <h1>Create your profile</h1>
