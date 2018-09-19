@@ -25,7 +25,9 @@ class HunterProfilesController < ApplicationController
     @hunter_profile.user_id = current_user.id
     if @hunter_profile.save
       params[:hunter_profile][:skill].each do |skill|
-        @hunter_profile.skill << skill[:skill_id]
+        if skill[:skill_id].present?
+          @hunter_profile.skills << Skill.find(skill[:skill_id].to_i)
+        end
       end
       @user.hunter_profile = @hunter_profile
       flash[:notice] = ["Your profile was successfully created"]
