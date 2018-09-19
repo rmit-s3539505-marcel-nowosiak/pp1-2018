@@ -9,7 +9,7 @@ class DashboardsController < ApplicationController
   end
 
   def get_listings
-    @listings = Hash.new
+    @matches = Hash.new
 
     @user = User.find(current_user.id)
     if @user.is_employer?
@@ -19,13 +19,13 @@ class DashboardsController < ApplicationController
         # get all of the matches for a listing
         matchedHunters = find_listing_matches(listing.id)
         # store an array of the hunters
-        @listings.store(listing, matchedHunters)
+        @matches.store(listing, matchedHunters)
       end
     else
       # otherwise find all of the matches for a hunter_profile from the join
       # table between listings and hunters
-      @listings = @user.hunter_profile.listings unless @user.nil?
+      @matches = @user.hunter_profile.listings unless @user.nil?
     end
-    @listings
+    @matches
   end
 end

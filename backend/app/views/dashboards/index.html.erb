@@ -5,12 +5,18 @@
 <div class="panel">
   <% if @user.first_name %>
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
-    <% if @listings %>
-      <% @listings.each do |listing| %>
-        <%= render 'listings/dashlisting', :locals => {
-            :listing => listing
-          } %>
+    <% if @matches %>
+    <tbody>
+      <% @matches.each do |listings| %>
+        <tr>
+          <td><%= listings[0].hours %></td><br>
+          <td><%= listings[0].title %></td><br>
+          <td><%= listings[0].location %></td><br>
+          <%= @matches[listings[0]].each do |hunter| %>
+          <% end %>
+        </tr>
       <% end %>
+    </tbody>
     <% end %>
   <% else %>
     <h1>Create your profile</h1>
