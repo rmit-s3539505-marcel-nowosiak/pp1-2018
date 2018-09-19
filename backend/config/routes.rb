@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'employer_profiles/new'
   # get 'hunter_profiles/new'
   root 'dashboards#index'
 
