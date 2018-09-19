@@ -96,11 +96,11 @@
 
   <div class="field" id="ski">
     <h2>Skills</h2>
-    <%= form.select :skill1, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true, :selected => @hunter_profile.skill1}, {:class => 'skill_class'} %><br />
-    <%= form.select :skill2, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br /> 
-    <%= form.select :skill3, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
-    <%= form.select :skill4, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
-    <%= form.select :skill5, Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br /> 
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
   </div>
 
   <div class="actions">
