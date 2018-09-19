@@ -13,8 +13,10 @@
           <td><%= listings[0].title %></td><br>
           <td><%= listings[0].location %></td><br>
           <%= @matches[listings[0]].each do |hunter| %>
+            <%= hunter.user.email %><br>
+            <%= hunter.user.first_name + ' ' + hunter.user.last_name %><br>
           <% end %>
-        </tr>
+        </tr><br>
       <% end %>
     </tbody>
     <% end %>
