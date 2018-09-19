@@ -4,10 +4,14 @@
 <div class="jumbotron">
 <div class="panel">
   <% if @user.first_name %>
-  <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
-  <% if @listings %>
-  <%= render 'listings', :object => @listings %>
-  <% end %>
+    <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
+    <% if @listings %>
+      <% @listings.each do |listing| %>
+        <%= render 'listings/dashlisting', :locals => {
+            :listing => listing
+          } %>
+      <% end %>
+    <% end %>
   <% else %>
     <h1>Create your profile</h1>
     <!-- Render the profile creation panel etc -->
