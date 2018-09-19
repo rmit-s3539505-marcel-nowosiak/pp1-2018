@@ -24,6 +24,9 @@ class HunterProfilesController < ApplicationController
     puts @hunter_profile.inspect
     @hunter_profile.user_id = current_user.id
     if @hunter_profile.save
+      params[:hunter_profile][:skill].each do |skill|
+        @hunter_profile.skill << skill[:skill_id]
+      end
       @user.hunter_profile = @hunter_profile
       flash[:notice] = ["Your profile was successfully created"]
       puts "Your profile was successfully created"
@@ -77,6 +80,6 @@ class HunterProfilesController < ApplicationController
     end
 
     def profile_params
-      params[:hunter_profile].permit(:industry, :hours, :location, :min_salary, :max_salary, :skill1, :skill2, :skill3, :skill4, :skill5)
+      params[:hunter_profile].permit(:industry, :hours, :location, :min_salary, :max_salary)
     end
 end
