@@ -1,6 +1,7 @@
 class EmployerProfilesController < ApplicationController
   before_action :get_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :get_profile, only: [:edit, :update, :destroy]
+  before_action :check_profile, only: [:edit, :new]
 
   def index
   end
@@ -10,11 +11,10 @@ class EmployerProfilesController < ApplicationController
 
   def new
     if @user.employer_profile.present?
-      puts "profile exist"
+      flash[:notice] = "You already have an employer profile"
       redirect_to edit_employer_profile_path(@user.id)
     else
       @employer_profile = EmployerProfile.new
-      puts "no profile, creating"
     end
   end
 
@@ -23,42 +23,43 @@ class EmployerProfilesController < ApplicationController
     @employer_profile.user_id = current_user.id
     if @employer_profile.save
       @user.employer_profile = @employer_profile
-      flash[:notice] = ["Your profile was successfully created"]
-      puts "Your profile was successfully created"
+      flash[:notice] = "Your profile was successfully created"
       redirect_to edit_employer_profile_path(@user.id)
     else
-      flash[:notice] = ["Your profile could not be created"]
-      puts "Your profile was not created"
+      flash[:notice] = "Your profile could not be created"
       redirect_to root_path
     end
   end
 
   def edit
-    if @user.employer_profile.present?
-      puts "profile exist"
-    else
-      puts "profile doesnt exist"
+    if !@user.employer_profile.present?
+      flash[:notice] = "You have no profile, please create one"
       redirect_to new_employer_profile_path
     end
   end
 
   def update
     if @employer_profile.update(profile_params)
-      puts "Your profile was successfully updated"
-      flash[:notice] = ["Your profile was successfully updated"]
+      flash[:notice] = "Your profile was successfully updated"
     else
-      flash[:notice] = ["Your profile could not be updated"]
+      flash[:notice] = "Your profile could not be updated"
     end
   end
 
   def destroy
     @user.employer_profile.destroy
-    flash[:notice] = "Successfully destroyed job hunter profile."
+    flash[:notice] = "Successfully destroyed employer profile."
     redirect_to edit_employer_profile_path(@user.id)
-    puts "Your profile was successfully deleted"
   end
 
   private
+
+    def check_profile
+      if @user.employer_profile.present?
+        flash[:notice] = "You already have a job hunter profile"
+        redirect_to root_url
+      end
+    end
 
     def get_profile
       @employer_profile = @user.employer_profile
