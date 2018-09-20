@@ -28,11 +28,6 @@ ActiveRecord::Schema.define(version: 2018_09_12_163636) do
     t.string "hours"
     t.float "min_salary"
     t.integer "max_salary"
-    t.integer :skill1, :references => "skills"
-    t.integer :skill2, :references => "skills"
-    t.integer :skill3, :references => "skills"
-    t.integer :skill4, :references => "skills"
-    t.integer :skill5, :references => "skills"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hunter_profiles_on_user_id"
