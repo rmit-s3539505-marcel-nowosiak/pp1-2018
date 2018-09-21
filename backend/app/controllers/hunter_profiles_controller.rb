@@ -54,7 +54,7 @@ class HunterProfilesController < ApplicationController
   end
 
   def offer
-    
+    hunter_profile.listings << listing
   end
 
   def destroy

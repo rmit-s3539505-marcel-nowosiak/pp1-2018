@@ -1,4 +1,6 @@
 <!-- Form for offering a listing to a hunter -->
-<%= form_tag do %>
-  <% hidden_field_tag() %>
+<%= form_with controller: HunterProfile.offer do |form| %>
+  <%= hidden_field(:listing, @Listing) %>
+  <%= hidden_field(:hunter_profile, @HunterProfile) %>
+  <%= form.submit %>
 <% end %>
