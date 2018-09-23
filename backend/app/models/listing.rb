@@ -9,7 +9,7 @@ class Listing < ApplicationRecord
     ['skill one'] # placeholder
   end
 
-  def create_offer(hunter)
+  def offer(hunter)
     self.hunter_profiles << hunter
   end
 end
