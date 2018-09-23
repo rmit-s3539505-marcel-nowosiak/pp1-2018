@@ -19,7 +19,10 @@
             <!-- TODO form to pass hunter and listing so we can do
               hunter.listings << listing
             and create an offer for the hunter -->
-            <%= render partial: "make_offer", locals: {hunter_profile: hunter} %>
+            <%= form_for(listing.build) do |f| %>
+              <div><%= hidden_field_tag :hunter, hunter %></div>
+              <%= f.submit "Offer", class: "btn btn-primary" %>
+            <% end %>
           </div>
         <% end %>
       <% end %>
