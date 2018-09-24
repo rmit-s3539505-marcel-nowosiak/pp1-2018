@@ -5,6 +5,35 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+skills = Skill.create(
+  [
+    {
+      name: 'C',
+      industry: 'SoftEng'
+    },
+    {
+      name: 'Java',
+      industry: 'SoftEng'
+    },
+    {
+      name: 'C++',
+      industry: 'SoftEng'
+    },
+    {
+      name: 'Ruby on Rails',
+      industry: 'WebDev'
+    },
+    {
+      name: 'Bartender',
+      industry: 'Hospitality'
+    },
+    {
+      name: 'Customer Service',
+      industry: 'Customer Service'
+    }
+  ]
+)
+
 users = User.create(
   [
     {
@@ -44,13 +73,15 @@ hunters = HunterProfile.create(
       user: users.first,
       min_salary: 23.7,
       location: 'Melbourne CBD',
-      hours: 'Full Time'
+      hours: 'Full Time',
+      skills: [skills[0], skills[1]]
     },
     {
       user: users.second,
       min_salary: 23.7,
       location: 'Melbourne CBD',
-      hours: 'Full Time'
+      hours: 'Full Time',
+      skills: [skills[0], skills[5], skills[4]]
     }
   ]
 )
@@ -58,39 +89,14 @@ hunters = HunterProfile.create(
 employers = EmployerProfile.create(
   [
     {
-      user: users.third,
+      user: users[2],
       location: 'Melbourne CBD',
       business_name: 'RMIT University'
     },
     {
-      user: users.fourth,
+      user: users[3],
       location: 'Brunswick',
       business_name: 'NJoeys Gym'
-    }
-  ]
-)
-
-Skill.create(
-  [
-    {
-      id: 1,
-      name: 'C',
-      industry: 'SoftEng'
-    },
-    {
-      id: 2,
-      name: 'Java',
-      industry: 'SoftEng'
-    },
-    {
-      id: 7,
-      name: 'C++',
-      industry: 'SoftEng'
-    },
-    {
-      id: 4,
-      name: 'Ruby on Rails',
-      industry: 'WebDev'
     }
   ]
 )
@@ -105,8 +111,8 @@ listings = Listing.create(
       application: false,
       min_salary: 25.5,
       hours: 'Full Time',
-      employer_profile: employers.second,
-      skills: [Skill.first, Skill.second]
+      employer_profile: employers[1],
+      skills: [skills[0], skills[1], skills[5]]
     },
     {
       title: 'C# Programmer',
@@ -116,8 +122,8 @@ listings = Listing.create(
       application: true,
       min_salary: 38.2,
       hours: 'Contract',
-      employer_profile: employers.first,
-      skills: []
+      employer_profile: employers[1],
+      skills: [skills[0], skills[2]]
     },
     {
       title: 'Kitchen Hand',
@@ -127,8 +133,8 @@ listings = Listing.create(
       application: true,
       min_salary: 15.2,
       hours: 'Part Time',
-      employer_profile: employers.first,
-      skills: []
+      employer_profile: employers[0],
+      skills: [skills[5], skills[4]]
     }
   ]
 )

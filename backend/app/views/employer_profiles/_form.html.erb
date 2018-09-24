@@ -1,0 +1,29 @@
+<%= form_with(model: @employer_profile, local: true) do |form| %>
+  <% if @employer_profile %>
+    <% if @employer_profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@employer_profile.errors.count, "error") %> profile not saved:</h2>
+
+        <ul>
+        <% @employer_profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :employer_profile_location %>
+  </div>
+  
+  <div class="field">
+    <%= form.label 'business name' %>
+    <%= form.text_field :business_name, id: :employer_profile_business_name %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

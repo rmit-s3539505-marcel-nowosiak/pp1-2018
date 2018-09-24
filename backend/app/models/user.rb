@@ -8,22 +8,24 @@ class User < ApplicationRecord
   attr_accessor :role_ids
   
   def is_employer?
-  #   # return true iff the employer table has a reference to this user's ID
-    if Employer.find_by(:user_id => self.id) # psuedocode
-      return true
-    else
-      return false
+    #   # return true iff the employer table has a reference to this user's ID
+    if User.find(self.id).employer_profile
+      true
     end
   end
-  
+
+  def has_profile?
+    true if self.hunter_profile or self.employer_profile
+  end
+
   def self.current
     Thread.current[:user]
   end
-  
-  def self.current=(user)
-    Thread.current[:user]=user
-  end
-  
+
+  # def self.current=(user)
+  #   Thread.current[:user]=user
+  # end
+
   def set_current_user
       User.current = current_user
   end
