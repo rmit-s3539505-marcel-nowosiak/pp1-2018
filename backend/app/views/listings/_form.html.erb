@@ -1,3 +1,33 @@
+<head>
+<script>
+$(document).ready(function(){
+   if($('#listing_industry').val() == ""){
+      $("#ski").attr('hidden','hidden');
+   }
+   else{
+      $("#ski").removeAttr('hidden');
+      var filter = $('#listing_industry').val();
+      $(".skill_class option").show();
+      $(".skill_class option[skill_ind]:not([skill_ind=\""+filter+"\"])").hide();
+      $(".skill_class option[selected=selected])").select();
+      $(".skill_class").val($('.skill_class option:visible:first').val());
+   }
+
+   $('#listing_industry').change(function(){
+      if($(this).val() == ""){
+        $("#ski").attr('hidden','hidden');
+      }
+      else{
+        var filter = $('#listing_industry').val();
+        $("#ski").removeAttr('hidden');
+        $(".skill_class option").show();
+        $(".skill_class option[skill_ind]:not([skill_ind=\""+filter+"\"])").hide();
+        $(".skill_class").val($('.skill_class option:visible:first').val());
+      }
+   })
+});
+</script>
+<head>
 <%= form_with(model: listing, local: true) do |form| %>
   <% if listing.errors.any? %>
     <div id="error_explanation">
@@ -17,6 +47,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :industry %>
+    <%= form.collection_select(:industry, Skill.select('distinct industry'), :industry, :industry, include_blank: true, :id =>'ind') %>
+  </div>
+
+  <div class="field">
     <%= form.label :location %>
     <%= form.text_field :location, id: :listing_location %>
   </div>
@@ -31,6 +66,15 @@
   <div class="field">
     <%= form.label :hours %>
     <%= form.select :hours, ['Full-Time','Part-Time','Casual','Contract']%>
+  </div>
+
+  <div class="field" id="ski">
+    <h2>Skills</h2>
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br /> 
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
   </div>
 
   <div class="actions">
