@@ -9,10 +9,10 @@ class DashboardsController < ApplicationController
   end
 
   def get_listings
-    @matches = Hash.new
 
     @user = User.find(current_user.id)
     if @user.is_employer?
+      @matches = Hash.new
       # find all the matched hunters for each listing for an employer_profile
       # and return a hash of hunters for each listing
       @user.employer_profile.listings.each do |listing|
@@ -22,9 +22,12 @@ class DashboardsController < ApplicationController
         @matches.store(listing, matchedHunters)
       end
     else
+      @matches = []
       # otherwise find all of the matches for a hunter_profile from the join
       # table between listings and hunters
-      @matches = @user.hunter_profile.listings unless @user.nil?
+      @user.hunter_profile.listings.each do |listing|
+        @matches.append(listing)
+      end
     end
     @matches
   end
