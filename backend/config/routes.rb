@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'employer_profiles/new'
   # get 'hunter_profiles/new'
   root 'dashboards#index'
 
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   # resources :registrations
   # resources :sessions
   resources :hunter_profiles
+  resources :employer_profiles
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
