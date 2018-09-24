@@ -33,6 +33,15 @@
     <%= form.select :hours, ['Full-Time','Part-Time','Casual','Contract']%>
   </div>
 
+  <div class="field" id="ski">
+    <h2>Skills</h2>
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br /> 
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+    <%= form.select 'skill[][skill_id]', Skill.all.map {|s| [s.name, s.id, {:'skill_ind' => s.industry}]}, {:include_blank => true}, {:class => 'skill_class'} %><br />
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
