@@ -13,14 +13,18 @@ class User < ApplicationRecord
       true
     end
   end
-  
+
+  def has_profile?
+    true if self.hunter_profile or self.employer_profile
+  end
+
   def self.current
     Thread.current[:user]
   end
 
-  def self.current=(user)
-    Thread.current[:user]=user
-  end
+  # def self.current=(user)
+  #   Thread.current[:user]=user
+  # end
 
   def set_current_user
     User.current = current_user

@@ -8,4 +8,8 @@ class Listing < ApplicationRecord
     # self.required_skills # some way of returning a set of skills
     ['skill one'] # placeholder
   end
+
+  def offer(hunter)
+    self.hunter_profiles << hunter
+  end
 end

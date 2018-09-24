@@ -52,6 +52,13 @@ class HunterProfilesController < ApplicationController
     end
   end
 
+  def offer
+    @hunter_profile = HunterProfile.find(params[:id])
+    listing = params[:listing_id]
+    @hunter_profile.listings << listing unless @hunter_profile.nil? or listing.nil?
+    #render :nothing => true # render nothing
+  end
+
   def destroy
     @user.hunter_profile.destroy
     flash[:notice] = "Successfully destroyed job hunter profile."
