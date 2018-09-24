@@ -67,24 +67,6 @@ users = User.create(
   ]
 )
 
-hunters = HunterProfile.create(
-  [
-    {
-      user: users.first,
-      min_salary: 23.7,
-      location: 'Melbourne CBD',
-      hours: 'Full Time',
-      skills: [skills[0], skills[1]]
-    },
-    {
-      user: users.second,
-      min_salary: 23.7,
-      location: 'Melbourne CBD',
-      hours: 'Full Time',
-      skills: [skills[0], skills[5], skills[4]]
-    }
-  ]
-)
 
 employers = EmployerProfile.create(
   [
@@ -135,6 +117,27 @@ listings = Listing.create(
       hours: 'Part Time',
       employer_profile: employers[0],
       skills: [skills[5], skills[4]]
+    }
+  ]
+)
+
+hunters = HunterProfile.create(
+  [
+    {
+      user: users[0],
+      min_salary: 23.7,
+      location: 'Melbourne CBD',
+      hours: 'Full Time',
+      skills: [skills[0], skills[1]],
+      listings: [listings[0]]
+    },
+    {
+      user: users[1],
+      min_salary: 23.7,
+      location: 'Melbourne CBD',
+      hours: 'Full Time',
+      skills: [skills[0], skills[5], skills[4]],
+      listings: [listings[0], listings[1]]
     }
   ]
 )
