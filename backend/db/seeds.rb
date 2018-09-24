@@ -128,16 +128,35 @@ hunters = HunterProfile.create(
       min_salary: 23.7,
       location: 'Melbourne CBD',
       hours: 'Full Time',
-      skills: [skills[0], skills[1]],
-      listings: [listings[0]]
+      skills: [skills[0], skills[1]]
     },
     {
       user: users[1],
       min_salary: 23.7,
       location: 'Melbourne CBD',
       hours: 'Full Time',
-      skills: [skills[0], skills[5], skills[4]],
-      listings: [listings[0], listings[1]]
+      skills: [skills[0], skills[5], skills[4]]
+    }
+  ]
+)
+
+employments = Employment.create(
+  [
+    {
+      hunter_profile: hunters[0],
+      listing: listings[0]
+    },
+    {
+      hunter_profile: hunters[0],
+      listing: listings[1]
+    },
+    {
+      hunter_profile: hunters[0],
+      listing: listings[2]
+    },
+    {
+      hunter_profile: hunters[1],
+      listing: listings[1]
     }
   ]
 )
