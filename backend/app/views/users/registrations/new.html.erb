@@ -1,16 +1,21 @@
-<% provide(:title, 'Sign up') %>
-
-   <div style="min-height: 100%; padding-bottom: 1px;"><br><br>
+<div class="container py-5">
     <div class="row">
-     <div class="card horizontal z-depth-2" style="min-width: 650px; margin: auto; padding: 10px; border-radius: 15px;">
-      <h1 class="card-header text-center" style="color: #304a74;">Sign Up</h1>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+  <!-- form card login -->
+       <div class="card rounded-0">
+           <div class="card-header">
+              <h3 class="mb-0">Sign up</h3>
+            </div>
+        <div class="card-body">
    
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
     <div class="form-group">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg rounded-0' %>
     </div>
 
     <div class="form-group">
@@ -18,22 +23,25 @@
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control form-control-lg rounded-0' %>
     </div>
 
     <div class="form-group">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control form-control-lg rounded-0' %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up", class: 'btn btn-primary btn-lg btn-block' %>
+      <%= f.submit "Sign up", class: 'btn-success btn-lg float-right' %>
+    </div>
     </div>
     
     <div class="card-header text-center">
       <%= render "users/shared/links" %>
       </div>
     </div>
+    </div>
+  </div>
     </div>
   </div>
 <% end %>
