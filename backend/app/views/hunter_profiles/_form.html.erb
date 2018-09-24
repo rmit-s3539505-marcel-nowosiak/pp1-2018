@@ -3,6 +3,7 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
+
     $(document).ready(function(){
        if($('#hunter_profile_industry').val() == ""){
           $("#ski").attr('hidden','hidden');
@@ -15,7 +16,7 @@
           $(".skill_class option[selected=selected])").select();
           $(".skill_class").val($('.skill_class option:visible:first').val());
        }
-  
+    
        $('#hunter_profile_industry').change(function(){
           if($(this).val() == ""){
             $("#ski").attr('hidden','hidden');
