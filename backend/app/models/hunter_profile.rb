@@ -6,7 +6,7 @@ class HunterProfile < ApplicationRecord
   has_many :employments
 
   def offer(listing)
-    Employment.create(listing, self)
+    Employment.create(self, listing)
   end
 
   def listings

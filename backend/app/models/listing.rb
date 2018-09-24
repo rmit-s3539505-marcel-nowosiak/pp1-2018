@@ -6,10 +6,15 @@ class Listing < ApplicationRecord
 
   def get_required_skills
     # self.required_skills # some way of returning a set of skills
-    ['skill one'] # placeholder
+    self.skills
   end
 
   def offer(hunter)
-    self.hunter_profiles << hunter
+    Employment.create(hunter, self)
+  end
+
+  def hunters
+    # return all the listings from the employments table
+    Employment.where(listing_id: self.id)
   end
 end
