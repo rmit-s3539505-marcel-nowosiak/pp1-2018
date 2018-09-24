@@ -24,8 +24,13 @@ class ListingsController < ApplicationController
   # POST /listings
   def create
     @listing = Listing.new(listing_params)
-
+    @listing.employer_profile_id = current_user.id
     if @listing.save
+      params[:listing][:skill].each do |skill|
+        if skill[:skill_id].present?
+          @listing.skills << Skill.find(skill[:skill_id].to_i)
+        end
+      end
       redirect_to @listing, notice: 'Listing was successfully created.'
     else
       render :new
@@ -55,6 +60,6 @@ class ListingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def listing_params
-      params.permit(:title, :body, :min_salary, :max_salary, :hours)
+      params[:listing].permit(:title, :body, :min_salary, :max_salary, :hours)
     end
 end
