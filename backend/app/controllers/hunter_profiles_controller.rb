@@ -55,7 +55,8 @@ class HunterProfilesController < ApplicationController
   def offer
     @hunter_profile = HunterProfile.find(params[:id])
     listing = params[:listing]
-    @hunter_profile.listings << listing unless @hunter_profile.nil? or listing.nil?
+    # TODO rework to pass in listing id for the button
+    Employment.new(:hunter_profile_id => params[:id], :listing_id => params{:listing].id)
     #render :nothing => true # render nothing
   end
 
