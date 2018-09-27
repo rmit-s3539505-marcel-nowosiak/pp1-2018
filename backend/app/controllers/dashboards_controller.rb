@@ -2,6 +2,7 @@ class DashboardsController < ApplicationController
   before_action :require_login
   # GET /dashboards
   def index
+    @user = current_user
     # return all the listings if the user has a profile already
     if current_user.has_profile?
       @listings = get_listings
@@ -10,7 +11,7 @@ class DashboardsController < ApplicationController
 
   def get_listings
 
-    @user = User.find(current_user.id)
+    #@user = User.find(current_user.id)
     if @user.is_employer?
       @matches = Hash.new
       # find all the matched hunters for each listing for an employer_profile
