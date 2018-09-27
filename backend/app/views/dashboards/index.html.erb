@@ -1,7 +1,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="jumbotron">
+<main role="main" class="container">
 <div class="panel">
   <% if @user.first_name %>
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
@@ -60,3 +60,4 @@
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, class: 'btn btn-primary btn-lg' %>
 </div>
 </div>
+</main>

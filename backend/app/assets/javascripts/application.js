@@ -17,9 +17,22 @@
 //= require_jquery-ui
 //= require_jquery-ujs
 //= require bootstrap
-//= require bootstrap/dropdown
+//= require popper
 //= require turbolinks
 //= require_tree .
 
 
-
+$(document).ready(function () {
+    var slider = $("#money_slider").slider({
+        range: true,
+        min: 10000,
+        max: 500000,
+        values: [250000, 450000],
+        slide: function (event, ui) {
+            $("#hunter_profile_min_salary").val(ui.values[0]);
+            $("#hunter_profile_max_salary").val(ui.values[1]);
+        }
+    });
+    $("#hunter_profile_min_salary").val(slider.slider("values")[0]);
+    $("#hunter_profile_max_salary").val(slider.slider("values")[1]);
+});
