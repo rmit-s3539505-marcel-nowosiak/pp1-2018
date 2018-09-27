@@ -54,7 +54,7 @@ class HunterProfilesController < ApplicationController
 
   def offer
     @hunter_profile = HunterProfile.find(params[:id])
-    listing = params[:listing_id]
+    listing = params[:listing]
     @hunter_profile.listings << listing unless @hunter_profile.nil? or listing.nil?
     #render :nothing => true # render nothing
   end
