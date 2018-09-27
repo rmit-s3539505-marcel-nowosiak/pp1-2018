@@ -54,9 +54,9 @@ class HunterProfilesController < ApplicationController
 
   def offer
     @hunter_profile = HunterProfile.find(params[:id])
-    listing = params[:listing]
+    listing = params[:listing_id]
     # TODO rework to pass in listing id for the button
-    Employment.new(:hunter_profile_id => params[:id], :listing_id => params{:listing].id)
+    # Employment.new(:hunter_profile_id => params[:id], :listing_id => listing.id)
     #render :nothing => true # render nothing
   end
 
@@ -90,6 +90,7 @@ class HunterProfilesController < ApplicationController
     end
 
     def profile_params
-      params[:hunter_profile].permit(:industry, :hours, :location, :min_salary, :max_salary)
+      params[:hunter_profile].permit(:industry, :hours, :location, :min_salary,
+        :max_salary, :listing_id)
     end
 end

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'employments/create'
-  get 'employer_profiles/new'
   # get 'hunter_profiles/new'
   root 'dashboards#index'
 
@@ -31,7 +29,8 @@ Rails.application.routes.draw do
   resources :hunter_profiles
   resources :employer_profiles
 
-  resources :employments
+  # create new employments from the offer button
+  resources :employments, only: [:new, :create]
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
