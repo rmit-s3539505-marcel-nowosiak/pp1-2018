@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_110403) do
+ActiveRecord::Schema.define(version: 2018_09_24_100539) do
 
   create_table "employer_profiles", force: :cascade do |t|
     t.integer "user_id"
@@ -21,15 +21,32 @@ ActiveRecord::Schema.define(version: 2018_09_19_110403) do
     t.index ["user_id"], name: "index_employer_profiles_on_user_id"
   end
 
-  create_table "hunter_profiles", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "location"
-    t.float "min_salary"
-    t.string "hours"
+  create_table "employments", force: :cascade do |t|
+    t.integer "listing_id"
+    t.integer "hunter_profile_id"
+    t.boolean "offer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["hunter_profile_id"], name: "index_employments_on_hunter_profile_id"
+    t.index ["listing_id"], name: "index_employments_on_listing_id"
+  end
+
+  create_table "hunter_profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "industry"
+    t.string "location"
+    t.string "hours"
+    t.float "min_salary"
     t.integer "max_salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hunter_profiles_on_user_id"
+  end
+
+  create_table "hunter_profiles_listings", id: false, force: :cascade do |t|
+    t.integer "listing_id", null: false
+    t.integer "hunter_profile_id", null: false
+    t.index ["hunter_profile_id", "listing_id"], name: "index_hunter_profiles_listings_on_profile_id_and_listing_id"
   end
 
   create_table "hunter_profiles_skills", id: false, force: :cascade do |t|
@@ -57,19 +74,6 @@ ActiveRecord::Schema.define(version: 2018_09_19_110403) do
   create_table "listings_skills", id: false, force: :cascade do |t|
     t.integer "listing_id", null: false
     t.integer "skill_id", null: false
-    t.index ["listing_id", "skill_id"], name: "index_listings_skills_on_listing_id_and_skill_id"
-  end
-
-  create_table "matches", force: :cascade do |t|
-    t.boolean "accepted"
-    t.boolean "offered"
-    t.boolean "application"
-    t.integer "hunterprofile_id"
-    t.integer "listing_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["hunterprofile_id"], name: "index_matches_on_hunterprofile_id"
-    t.index ["listing_id"], name: "index_matches_on_listing_id"
   end
 
   create_table "roles", force: :cascade do |t|

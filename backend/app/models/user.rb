@@ -4,18 +4,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-         
+
+  has :employer_profile
   attr_accessor :role_ids
-  
+
   def is_employer?
     #   # return true iff the employer table has a reference to this user's ID
-    if User.find(self.id).employer_profile
+    if EmployerProfile.find_by(:user_id => self.id)
       true
     end
   end
 
   def has_profile?
-    true if self.hunter_profile or self.employer_profile
+    true if HunterProfile.find_by(:user_id => self.id) or EmployerProfile.find_by(:user_id => self.id)
   end
 
   def self.current
@@ -44,6 +45,6 @@ class User < ApplicationRecord
 
   # queue alll the matches a user has at a later time
   def queue_matches
-    
+
   end
 end
