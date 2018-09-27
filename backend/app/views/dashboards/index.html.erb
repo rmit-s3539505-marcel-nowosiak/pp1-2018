@@ -3,7 +3,7 @@
 
 <main role="main" class="container">
 <div class="panel">
-  <% if @user.first_name %>
+  <% if current_user.first_name %>
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
     <% if @matches %>
       <section class="matched-hunters">
