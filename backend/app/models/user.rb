@@ -5,7 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  has :employer_profile
+  has_one :employer_profile
+  has_one :hunter_profile
+
   attr_accessor :role_ids
 
   def is_employer?
@@ -16,7 +18,7 @@ class User < ApplicationRecord
   end
 
   def has_profile?
-    true if HunterProfile.find_by(:user_id => self.id) or EmployerProfile.find_by(:user_id => self.id)
+    true if self.hunter_profile or self.employer_profile
   end
 
   def self.current
