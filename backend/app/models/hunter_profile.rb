@@ -5,4 +5,7 @@ class HunterProfile < ApplicationRecord
 
   has_and_belongs_to_many :listings, :through => :hunter_profiles_listings
 
+  def offer(listing)
+    self.listings << listing
+  end
 end

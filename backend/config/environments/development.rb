@@ -26,6 +26,14 @@ Rails.application.configure do
 
         config.cache_store = :null_store
     end
+    
+    # Enable mail delivery for authentication
+    config.action_mailer.perform_deliveries = true
+    # Mail Delivery default URL options
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {:address => 'pp1-2018-s3539505.c9users.io', :port => 8082} 
+    config.action_mailer.default_url_options = { host: 'pp1-2018-s3539505.c9users.io:8081' }
+    
 
     # Store uploaded files on the local file system (see config/storage.yml for options)
     config.active_storage.service = :local

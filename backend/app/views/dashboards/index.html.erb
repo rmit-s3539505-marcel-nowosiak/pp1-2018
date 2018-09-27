@@ -5,35 +5,53 @@
 <div class="panel">
   <% if @user.first_name %>
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
-
-    <div class="listings">
-      <!-- If an employer has logged in then render each listing with
-      each matched hunter -->
-      <% if @user.is_employer? %>
-        <%= @listings.each do |listing,hunter| %>
-          <!-- score for the hunter maps to hunter[1] -->
-          <div class="detailed-listing">
-            <p><%= listing.title %></p>
-            <p><%= hunter[0].user.first_name + ' ' + hunter[0].user.last_name %></p>
-            <p><%= hunter[1] %>% match</p>
-            <!-- TODO make button toggle visibility of the detailed hunter info -->
-            <button>Show More</button>
-            <div class="hunter-details">
-              <!-- Render this on button press -->
+    <% if @matches %>
+      <section class="matched-hunters">
+        <% if @user.is_employer? %>
+          <!-- use the keys as the listings to iterate over the hash with -->
+            <% @matches.keys.each do |listing| %>
+              <p><%= listing.title %></p>
+              <!-- get the hunters from the listing as the key in the matches hash -->
+              <% @matches[listing].each do |hunter| %>
+                <div class="hunter-details">
+                  <!-- print out the hunter details -->
+                  <p><%= hunter.user.first_name %></p>
+                  <p><%= hunter.user.email %></p>
+                  <!-- TODO form to pass hunter and listing so we can do
+                    hunter.listings << listing
+                  and create an offer for the hunter -->
+                  <%= button_to 'Offer Job',
+                  offer_hunter_profile_path(listing.id)
+                  # {
+                  #   controller: 'hunter_profiles',
+                  #   action: 'offer',
+                  #   listing: listing},
+                  #   data: { confirm: 'Are you sure?'}
+                  %>
+                </div>
+              <% end %>
+            <% end %>
+        <% else %>
+        <!-- render the matches as if the hunter is here -->
+        <!-- TODO modify this in anyway that is seen fit -->
+          <div class="hunter-offers">
+            <% @matches.each do |listing| %>
+            <div class="listing-detail">
+              <p>Job TItle: <%= listing.title %></p>
+              <p>Offered from: <%= listing.employer_profile.business_name %></p>
+              <p>Salary: <%= listing.min_salary %></p>
             </div>
+            <% end %>
           </div>
         <% end %>
-      <% else %> <!-- otherwise the user is a hunter -->
-        <%= @listings.each do |listing| %>
-          <%= listing.title %>
-        <% end %>
-      <% end %>
-    </div>
-    <!-- otherwise redner the profile creation view -->
+      </section>
+    <% end %>
   <% else %>
     <h1>Create your profile</h1>
     <!-- Render the profile creation panel etc -->
-    <%= render :partial => 'hunter_profiles/form' %>
+    <%=
+    #  render 'hunter_profiles/form'
+    %>
   <% end %>
 </div>
 

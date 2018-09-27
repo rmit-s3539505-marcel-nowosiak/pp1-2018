@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     @hunter = HunterProfile.find(prof_id)
     return nil if @hunter.nil?
 
-    @matches = Hash.new
+    @matches = []
 
     # Return a hash of listings, with scores
     @listings = Listing.where("min_salary >= ?",
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       # only store listings with a 50% or more match
       percentage = percentage(score(@hunter, listing), max_score(listing))
       if percentage > 50
-        @matches[listing] = percentage.round
+        @matches.append(listing)
       end
     end
     # return all the valid listings with their score
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   # to be used to render a list of matches to a particular listing on login
   def find_listing_matches(listing_id)
     # create an empty hashmap to render matches with scores
-    @matches = Hash.new
+    matches = []
     # Find the listing that has the particular ID
     @listing = Listing.find(listing_id)
     # find hunters whose preference for salary is less than/equal the one offered
@@ -57,12 +57,13 @@ class ApplicationController < ActionController::Base
       # only store listings with a 50% or more match
       percentage = percentage(score(hunter, @listing), max_score(@listing))
       if percentage > 50
-        # store the hunter with their match and return it to the view
-        @matches[hunter] = percentage.round
+        # add the hunter to the array. Recalculate the match percentage later
+        # in the view
+        matches.append(hunter)
       end
     end
     # return all the valid hunters for the listing that was queried
-    @matches
+    matches
   end
 
   # returns the distance between two street addresses to the closest metre

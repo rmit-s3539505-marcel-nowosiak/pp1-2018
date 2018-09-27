@@ -1,0 +1,4 @@
+<h1>Edit Profile</h1>
+
+<%= render 'form', employer_profile: @employer_profile %>
+<%= button_to "Delete employer profile", @employer_profile, :method => :delete, data: {confirm: 'Permanently delete profile?'} %>
