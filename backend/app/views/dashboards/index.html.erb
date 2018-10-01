@@ -11,51 +11,48 @@
   </div>
     
     <% if @matches %>
-    
-     <!-- <section class="matched-hunters">-->
-        <div class="row">
+      <div class="row" id="matched-hunters">
         <% if @user.is_employer? %>
           <!-- use the keys as the listings to iterate over the hash with -->
-            <% @matches.keys.each do |listing| %>
-              <p>Job Title: <%= listing.title %></p>
+            <h1>Matches:</h1>
+            <%= @matches.keys.each do |listing| %>
+              <p><% listing.title %></p>
               <!-- get the hunters from the listing as the key in the matches hash -->
               <% @matches[listing].each do |hunter| %>
-              
-         <!--       <div class="hunter-details">-->
-                  <div class="col-xs-12">
-                  
+                <div class="col-xs-12" id="hunter-details">
                   <!-- print out the hunter details -->
-                  <p>Applicant's Name: <%= hunter.user.first_name %></p>
-                  <p>Applicant's Email: <%= hunter.user.email %></p>
+                  <p><% hunter.user.first_name %></p>
+                  <p><% hunter.user.email %></p>
                   <!-- TODO form to pass hunter and listing so we can do
                     hunter.listings << listing
                   and create an offer for the hunter -->
-                  <%= button_to 'Offer Job', class: 'btn btn-primary btn-sm'
-                  # offer_hunter_profile_path(listing.id)
-                  # {
-                    # controller: 'hunter_profiles',
-                    # action: 'offer',
-                    # listing: listing},
-                    # data: { confirm: 'Are you sure?'}
-                  %>
+                  <%= form_for Employment.create do |f| %>
+                    <%= hunter.user.first_name %></strong>
+                    <%= hidden_field_tag :listing, listing %>
+                    <%= hidden_field_tag :hunter, hunter %>
+                    <%= f.submit "Offer Job" %>
+                  <% end %>
                 </div>
               <% end %>
             <% end %>
-        <% else %>
-        <!-- render the matches as if the hunter is here -->
-        <!-- TODO modify this in anyway that is seen fit -->
-        
-      <!--    <div class="hunter-offers">-->
-             <div class="row">
-            
-            <% @matches.each do |listing| %>
-            
-       <!--     <div class="listing-detail">-->
-               <div class="col-xs-12">
-              
-              <p>Job Title: <%= listing.title %></p>
-              <p>Offered from: <%= listing.employer_profile.business_name %></p>
-              <p>Salary: <%= listing.min_salary %></p>
+            <h1>Applications:</h1>
+            <%= @applications.each do |a| %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="row" id="hunter-offers">
+            <h1>Offers:</h1>
+            <div>
+              <%= @offers.each do |o| %>
+
+              <% end %>
+            </div>
+            <h1>Matches:</h1>
+            <%= @matches.each do |listing| %>
+            <div class="col-xs-12" id="listing-detail">
+              <p>Job TItle: <% listing.title %></p>
+              <p>Offered from: <% listing.employer_profile.business_name %></p>
+              <p>Salary: <% listing.min_salary %></p>
             </div>
             <% end %>
           </div>
