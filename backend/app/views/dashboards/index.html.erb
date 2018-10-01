@@ -2,14 +2,14 @@
 
 <div class="panel">
   <div class="container">
-    
+
   <div class="row">
     <div class="col-xs-12">
   <% if current_user.first_name %>
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
     </div>
   </div>
-    
+
     <% if @matches %>
       <div class="row" id="matched-hunters">
         <% if @user.is_employer? %>
@@ -47,9 +47,9 @@
 
               <% end %>
             </div>
+            <div class="col-xs-12" id="listing-detail">
             <h1>Matches:</h1>
             <%= @matches.each do |listing| %>
-            <div class="col-xs-12" id="listing-detail">
               <p>Job TItle: <% listing.title %></p>
               <p>Offered from: <% listing.employer_profile.business_name %></p>
               <p>Salary: <% listing.min_salary %></p>
@@ -57,7 +57,7 @@
             <% end %>
           </div>
         <% end %>
-      <!--</section>--></div>
+      </div>
     <% end %>
   <% else %>
     <h1>Create your profile</h1>
@@ -75,4 +75,3 @@
 
 </div> <!-- div container-->
 </div> <!-- div panel -->
-
