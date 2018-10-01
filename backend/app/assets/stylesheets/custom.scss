@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
 /* alerts */
@@ -15,11 +16,13 @@
 /* universal */
 
 body {
-    padding-top: 10em;
+    padding-top: 5rem;
+    font-family: 'Roboto', sans-serif;
 }
 
 section {
     overflow: auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 textarea {
@@ -32,6 +35,7 @@ textarea {
 
 .center h1 {
     margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1,
@@ -41,6 +45,7 @@ h4,
 h5,
 h6 {
     line-height: 1;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -48,6 +53,8 @@ h1 {
     letter-spacing: -2px;
     margin-bottom: 30px;
     text-align: center;
+    padding: 20px;
+    color: #5093C2;
 }
 
 h2 {
@@ -60,8 +67,13 @@ h2 {
 }
 
 p {
-    font-size: 1.1px;
-    line-height: 1.7px;
+    font-size: 20px;
+    line-height: 1.0em;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px 0;
+    margin: auto;
+    color: #444;
+    width: 350px;
 }
 
 
@@ -69,6 +81,7 @@ p {
 
 nav {
     width: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 nav li {
@@ -88,33 +101,38 @@ footer {
     padding-top: 5px;
     border-top: 1px solid #eaeaea;
     color: #777;
+    font-family: 'Roboto', sans-serif;
+    a {
+        color: #555;
+        &:hover {
+            color: #222;
+        }
+    }
+    small {
+        text-align: center;
+        float: left;
+    }
+    ul {
+        float: right;
+        list-style: none;
+        li {
+            float: left;
+            margin-left: 15px;
+        }
+    }
 }
 
-footer a {
-    color: #555;
-}
+/* listings */
 
-footer a:hover {
-    color: #222;
-}
-
-footer small {
+table {
+    width: 800px;
+    margin: auto;
     text-align: center;
 }
 
-footer ul {
-    float: right;
-    list-style: none;
-}
-
-footer ul li {
-    float: left;
-    margin-left: 15px;
-}
-
-
-/* forms */
-
-.form-signin {
-    width: 55%;
+td,
+th {
+    padding: 10px;
+    border: 1px solid #888888;
+    font-family: 'Roboto', sans-serif;
 }
