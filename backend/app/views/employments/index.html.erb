@@ -13,7 +13,6 @@
     <% @employments.each do |employment| %>
       <tr>
         <td><%= link_to 'Show', employment %></td>
-        <td><%= link_to 'Edit', edit_employment_path(employment) %></td>
         <td><%= link_to 'Destroy', employment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -22,4 +21,4 @@
 
 <br>
 
-<%= link_to 'New Employment', new_employment_path %>
+<%= link_to 'Home', root_path %>

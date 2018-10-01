@@ -12,6 +12,7 @@ class DashboardsController < ApplicationController
 
     @user = User.find(current_user.id)
     if @user.is_employer?
+      @offers = []
       @matches = Hash.new
       # find all the matched hunters for each listing for an employer_profile
       # and return a hash of hunters for each listing
@@ -20,15 +21,25 @@ class DashboardsController < ApplicationController
         matchedHunters = find_listing_matches(listing.id)
         # store an array of the hunters
         @matches.store(listing, matchedHunters)
+        employments = Employment.where(:listing_id => listing.id, :offer => false)
+        if !employments.nil?
+          employments.each do |e|
+            @offers.append(HunterProfile.find(e.hunter_profile_id))
+          end
+        end
       end
     else
-      @matches = []
+      @matches, @offers = [], []
       # otherwise find all of the matches for a hunter_profile from the join
       # table between listings and hunters
-      @user.hunter_profile.listings.each do |listing|
-        @matches.append(listing)
+      employments = Employment.where(:hunter_profile_id => @user.hunter_profile.id)
+      if !employments.nil?
+        employments.each do |e|
+          @offers.append(Listing.find(e.listing_id))
+        end
       end
     end
     @matches
+    @offers
   end
 end

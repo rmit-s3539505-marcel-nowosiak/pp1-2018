@@ -41,28 +41,32 @@ users = User.create(
       first_name: 'Johnny',
       last_name: 'Userson',
       password: 'Password1!',
-      password_confirmation: 'Password1!'
+      password_confirmation: 'Password1!',
+      confirmed_at: Time.now
     },
     {
       email: 'seeded_user2@gmail.com',
       first_name: 'Timmy',
       last_name: 'Realuser',
       password: 'Password1!',
-      password_confirmation: 'Password1!'
+      password_confirmation: 'Password1!',
+      confirmed_at: Time.now
     },
     {
       email: 'legitemployer@gmail.com',
       first_name: 'Joey',
       last_name: 'Gymowner',
       password: 'Password1!',
-      password_confirmation: 'Password1!'
+      password_confirmation: 'Password1!',
+      confirmed_at: Time.now
     },
     {
       email: 'legitemployer2@gmail.com',
       first_name: 'Mike',
       last_name: 'Usersonson',
       password: 'Password1!',
-      password_confirmation: 'Password1!'
+      password_confirmation: 'Password1!',
+      confirmed_at: Time.now
     }
   ]
 )
@@ -144,19 +148,28 @@ employments = Employment.create(
   [
     {
       hunter_profile: hunters[0],
-      listing: listings[0]
+      listing: listings[0],
+      offer: true
     },
     {
       hunter_profile: hunters[0],
-      listing: listings[1]
+      listing: listings[1],
+      offer: false
     },
     {
       hunter_profile: hunters[0],
-      listing: listings[2]
+      listing: listings[2],
+      offer: true
     },
     {
       hunter_profile: hunters[1],
-      listing: listings[1]
+      listing: listings[1],
+      offer: true
+    },
+    {
+      hunter_profile: hunters[0],
+      listing: listings[1],
+      offer: false
     }
   ]
 )
