@@ -6,14 +6,15 @@
   <% if current_user.first_name %>
     <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
     <% if @matches %>
-      <section class="matched-hunters">
+      <section class="container" id="matched-hunters">
         <% if @user.is_employer? %>
           <!-- use the keys as the listings to iterate over the hash with -->
+            <h1>Matches:</h1>
             <%= @matches.keys.each do |listing| %>
               <p><% listing.title %></p>
               <!-- get the hunters from the listing as the key in the matches hash -->
               <% @matches[listing].each do |hunter| %>
-                <div class="hunter-details">
+                <div class="container" id="hunter-details">
                   <!-- print out the hunter details -->
                   <p><% hunter.user.first_name %></p>
                   <p><% hunter.user.email %></p>
@@ -29,12 +30,23 @@
                 </div>
               <% end %>
             <% end %>
+            <h1>Applications:</h1>
+            <%= @applications.each do |a| %>
+
+            <% end %>
         <% else %>
         <!-- render the matches as if the hunter is here -->
         <!-- TODO modify this in anyway that is seen fit -->
-          <div class="hunter-offers">
+          <div id="hunter-offers">
+            <h1>Offers:</h1>
+            <div>
+              <%= @offers.each do |o| %>
+
+              <% end %>
+            </div>
+            <h1>Matches:</h1>
             <%= @matches.each do |listing| %>
-            <div class="listing-detail">
+            <div id="listing-detail">
               <p>Job TItle: <% listing.title %></p>
               <p>Offered from: <% listing.employer_profile.business_name %></p>
               <p>Salary: <% listing.min_salary %></p>

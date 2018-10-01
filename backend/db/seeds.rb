@@ -170,6 +170,16 @@ employments = Employment.create(
       hunter_profile: hunters[0],
       listing: listings[1],
       offer: false
+    },
+    {
+      hunter_profile: hunters[0],
+      listing: listings[2],
+      offer: false
+    },
+    {
+      hunter_profile: hunters[1],
+      listing: listings[2],
+      offer: false
     }
   ]
 )
