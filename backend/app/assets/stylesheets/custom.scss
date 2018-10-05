@@ -136,3 +136,52 @@ th {
     border: 1px solid #888888;
     font-family: 'Roboto', sans-serif;
 }
+
+.card-body {
+    label {
+        vertical-align: middle;
+        margin-right: 1rem;
+    }
+
+    input {
+        margin-right: 0.2rem;
+    }
+}
+
+.link-back {
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.listing {
+    p {
+        margin: auto 0;
+        width: 100%;
+    }
+}
+
+.listing-form {
+    label {
+        width: 100px;
+    }
+    .label_to {
+        width: 30px;
+    }
+    .skills {
+        h2 {
+            text-align: left;
+            margin-bottom: 2px;
+        }
+        .field {
+            margin-left: 100px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .actions {
+        margin-left: 100px;
+        margin-bottom: 15px;
+    }
+}
