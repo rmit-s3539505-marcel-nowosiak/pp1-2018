@@ -2,3 +2,52 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+#matched-hunters p {
+  margin: 0;
+  overflow-wrap: break-word;
+  width: 100%;
+}
+
+.hunters {
+  display: flex;
+}
+
+#hunter-details {
+  margin: 2px;
+  padding: 3px;
+}
+
+#hunter-details p {
+  margin: auto 0;
+  padding: 0;
+}
+
+#hunter-details label {
+  width: 60px;
+  overflow-wrap: break-word;
+}
+
+#hunter-details input {
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+#hunter-offers {
+  width: 100%
+}
+
+#matched-hunters h1,
+#hunter-offers h1 {
+  text-align: left;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#hunter-offers p {
+  margin: auto 0;
+}
+
+main {
+  margin-bottom: 100px;
+}
