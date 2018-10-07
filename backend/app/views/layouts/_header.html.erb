@@ -9,7 +9,7 @@
         <ul class="navbar-nav">
                     <li class="nav-item"><%= link_to "Home", '#', class: 'nav-link' %></li>
                     <li class="nav-item"><%= link_to "Browse", '#', class: 'nav-link' %></li>
-                    <li class="nav-item"><%= link_to "Job Listings", '#', class: 'nav-link' %></li>
+                    <li class="nav-item"><%= link_to "Job Listings", listings_path, class: 'nav-link' %></li>
         </ul>
         <ul class="navbar-nav ml-md-auto">
            <% if user_signed_in? %>
