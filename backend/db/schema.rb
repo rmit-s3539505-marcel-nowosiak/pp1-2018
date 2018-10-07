@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_100539) do
+ActiveRecord::Schema.define(version: 2018_10_07_090631) do
 
   create_table "employer_profiles", force: :cascade do |t|
     t.integer "user_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_100539) do
     t.string "business_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rating"
     t.index ["user_id"], name: "index_employer_profiles_on_user_id"
   end
 
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_100539) do
     t.integer "max_salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rating"
     t.index ["user_id"], name: "index_hunter_profiles_on_user_id"
   end
 
