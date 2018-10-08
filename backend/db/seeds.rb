@@ -80,12 +80,14 @@ employers = EmployerProfile.create(
     {
       user: users[2],
       location: 'Melbourne CBD',
-      business_name: 'RMIT University'
+      business_name: 'RMIT University',
+      rating: 3.5
     },
     {
       user: users[3],
       location: 'Brunswick',
-      business_name: 'NJoeys Gym'
+      business_name: 'NJoeys Gym',
+      rating: 3.5
     }
   ]
 )
@@ -135,14 +137,16 @@ hunters = HunterProfile.create(
       min_salary: 23.7,
       location: 'Melbourne CBD',
       hours: 'Full Time',
-      skills: [skills[0], skills[1]]
+      skills: [skills[0], skills[1]],
+      rating: 3.5
     },
     {
       user: users[1],
       min_salary: 23.7,
       location: 'Melbourne CBD',
       hours: 'Full Time',
-      skills: [skills[0], skills[5], skills[4]]
+      skills: [skills[0], skills[5], skills[4]],
+      rating: 3.5
     }
   ]
 )
