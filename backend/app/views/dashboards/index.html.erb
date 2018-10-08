@@ -3,42 +3,55 @@
 <div class="panel">
   <div class="container">
 
-  <div class="row">
-    <div class="col-xs-12">
-  <% if current_user.first_name %>
-    <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
+    <div class="row">
+      <div class="col-xs-12">
+        <% if current_user.first_name %>
+        <h1>Welcome to your dashboard, <%= @user.first_name%></h1>
+      </div>
     </div>
-  </div>
     <% if @matches %>
-      <div class="row" id="matched-hunters">
-        <% if @user.is_employer? %>
-          <!-- use the keys as the listings to iterate over the hash with -->
-          <div class="col-md-6"> 
-            <h1>Matches:</h1>
-            <ul class="list-group">
-            <% @matches.keys.each do |listing| %>
-            <li class="list-group-item justify-content-between">
-              <p>Job Title: <% listing.title %></p>
-              <div class="hunters">
-              <!-- get the hunters from the listing as the key in the matches hash -->
-              <p>Hunters: </p>
+    <div class="row" id="matched-hunters">
+      <% if @user.is_employer? %>
+      <div class="col-md-6">
+        <h1>Matches:</h1>
+        <ul class="list-group">
+          <% @matches.keys.each do |listing| %>
+          <li class="list-group-item justify-content-between">
+            <p>Job Title: <%= listing.title %></p>
+            <div class="hunters">
+              <p>Hunters </p>
               <div class="col-md-12">
-              <% @matches[listing].each do |hunter| %>
+                <% @matches[listing].each do |hunter| %>
                 <div id="hunter-details">
                   <!-- print out the hunter details -->
-                  <p><% hunter.user.first_name %></p>
-                  <p><% hunter.user.email %></p>
-                  <!-- TODO form to pass hunter and listing so we can do
-                    hunter.listings << listing
-                  and create an offer for the hunter -->
-                  <%= form_for Employment.create do |f| %>
-                   <label> <%= hunter.user.first_name %></strong></label>
-                    <%= hidden_field_tag :listing, listing %>
-                    <%= hidden_field_tag :hunter, hunter %>
+                  <p><%= hunter.user.first_name %></p>
+                  <p><%= hunter.user.email %></p>
+
+                  <%= link_to "View Details", "#hunterModal", :class => "btn", "data-toggle" => "modal" %>
+
+                  <div class="modal hide fade" id="hunterModal" title="Hunter Details">
+                    <div class="modal-header">
+                      <button aria-hidden="true" class="close" data-dismiss="modal" type="button">x</button>
+                      <h3 id="hunterModalLabel">Hunter Details</h3>
+                    </div>
+                    <div class="modal-body">
+                      <p><%= hunter.user.first_name %></p>
+                      <p><%= hunter.user.email %></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button aria-hidden="true" class="btn" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <%= form_for Employment.create do |f| %>
+                    <% hidden_field_tag :listing, listing %>
+                    <% hidden_field_tag :hunter, hunter %>
                     <%= f.submit "Offer Job" %>
-                  <% end %>
+                    <% end %>
+                  </div>
                 </div>  <!-- div #hunter-details -->
-              <% end %>
+                <% end %>
               </div>
             </div>
           </li>
@@ -46,62 +59,73 @@
         </ul>
       </div>
       <div class="col-md-6">
-            <h1>Applications:</h1>
-            <ul class="list-group">
-            <% @applications.each do |a| %>
-              <li class="list-group-item justify-content-between">
-                  <p>User Name: <%= a.user.first_name %></p>
-                  <p>Hours: <%= a.hours %></p>
-                  <p>Salary: <%= a.min_salary %></p>
-              </li>
-    <% end %>
-    </ul>
-  </div>
-</div> <!-- div #matched-hunters -->
-  <% else %>
+        <h1>Applications:</h1>
+        <ul class="list-group">
+          <% @applications.each do |a| %>
+          <li class="list-group-item justify-content-between">
+            <p>User Name: <%= a.user.first_name %></p>
+            <p>Hours: <%= a.hours %></p>
+            <p>Salary: <%= a.min_salary %></p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div> <!-- div #matched-hunters -->
+    <% else %>
     <div class="row" id="hunter-offers">
       <div class="col-md-6">
-            <h1>Offers:</h1>
-            <div>
-              <div class="list-group">
-              <% @offers.each do |o| %>
-                <a class="list-group-item justify-content-between">
-                  <p>Job Title: <%= o.title %></p>
-                  <p>Offered from: <%= o.employer_profile.business_name %></p>
-                  <p>Salary: <%= o.min_salary %></p>
-                </a>
-              <% end %>
+        <h1>Offers:</h1>
+        <div>
+          <div class="list-group">
+            <% @offers.each do |o| %>
+            <a class="list-group-item justify-content-between">
+              <p>Job Title: <%= o.title %></p>
+              <p>Offered from: <%= o.employer_profile.business_name %></p>
+              <p>Salary: <%= o.min_salary %></p>
+              <%= link_to "View Details", "#listingModal", :class => "btn", "data-toggle" => "modal" %>
+            </a>
+
+            <div class="modal hide fade" id="listingModal" title="Listing Details">
+              <div class="modal-header">
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">x</button>
+                <h3 id="listingModalLabel">Listing Details</h3>
+              </div>
+              <div class="modal-body">
+                <p><%= o.employer_profile.business_name %></p>
+              </div>
+              <div class="modal-footer">
+                <button aria-hidden="true" class="btn" data-dismiss="modal">Close</button>
+              </div>
             </div>
-          </div>
-        </div>
-            <div class="col-md-6" id="listing-detail">
-            <h1>Matches:</h1>
-            <ul class="list-group">
-            <% @matches.each do |listing| %>
-            <li class="list-group-item justify-content-between">
-              <p>Job Title: <% listing.title %></p>
-              <p>Offered from: <% listing.employer_profile.business_name %></p>
-              <p>Salary: <% listing.min_salary %></p>
-            </li>
             <% end %>
-            </ul>
           </div>
         </div>
-      <% end %>
-    </div> <!-- div container -->
+      </div>
+      <div class="col-md-6" id="listing-detail">
+        <h1>Matches:</h1>
+        <ul class="list-group">
+          <% @matches.each do |listing| %>
+          <li class="list-group-item justify-content-between">
+            <p>Job Title: <% listing.title %></p>
+            <p>Offered from: <% listing.employer_profile.business_name %></p>
+            <p>Salary: <% listing.min_salary %></p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
     <% end %>
+  </div> <!-- div container -->
+  <% end %>
   <% else %>
-    <h1>Create your profile</h1>
-    <!-- Render the profile creation panel etc -->
-    <%=
-    #  render 'hunter_profiles/form'
-    %>
+  <h1>Create your profile</h1>
+  <%=
+  #  render 'hunter_profiles/form'
+  %>
   <% end %>
 </div>  <!-- div panel-->
 
 
 <div class="text-center mt-5">
-<%= link_to "Sign Out", destroy_user_session_path, :method => :delete, class: 'btn btn-primary btn-lg' %>
+  <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, class: 'btn btn-primary btn-lg' %>
 </div>
-
-
