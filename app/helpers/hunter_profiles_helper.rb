@@ -1,0 +1,2 @@
+module HunterProfilesHelper
+end
