@@ -1,0 +1,7 @@
+h1:
+  industry: 'Software Engineering'
+  location: '123 fake st'
+  hours: 'Full-Time'
+  min_salary: 40
+  max_salary: 50
+  rating: 3.5

@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <% if @is_employer %>
+      <th>Hours</th>
+      <th>Title</th>
+      <th>Location</th>
+    <% else %>
+      <th>ID</th>
+      <th>Detail</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+    <% if @is_employer %>
+          <%# if warden.user.has_role? (:employer) %>
+          <%= render 'dashlisting', listing: listing %>
+        <tr>
+        <% else %>
+        <tr>
+          <td>
+          <%= warden.user.id %>
+          </td>
+       <% end %>
+        <td><%= link_to 'Show', listing %></td>
+        <td><% if @is_employer %><%= link_to 'Edit', edit_listing_path(listing) %><% else %>X<% end %></td>
+        <td><% if @is_employer %><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %><% else %> X<% end %></td>
+      </tr>
+        <% if listing != @listings.last %>
+          <td colspan=3></td>
+          <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div style= "text-align: center;"><%= link_to 'New Listing', new_listing_path %></div>
+   
