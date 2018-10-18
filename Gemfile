@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
+gem 'rails-ujs'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'geocoder' # query apis for loation and searching data
@@ -21,8 +22,6 @@ gem 'geocoder' # query apis for loation and searching data
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
-gem 'jquery-ui-rails'
-gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 gem 'sass-rails'

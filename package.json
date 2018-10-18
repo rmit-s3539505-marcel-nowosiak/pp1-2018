@@ -1,0 +1,10 @@
+{
+  "name": "pp1-2018",
+  "version": "1.0.0",
+  "description": "Hireme Job App",
+  "repository": "git@github.com:rmit-s3539505-marcel-nowosiak/pp1-2018.git",
+  "author": "Rob Laine <rlainewyllie@gmail.com>",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
