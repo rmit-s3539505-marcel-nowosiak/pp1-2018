@@ -1,0 +1,19 @@
+l1:
+  title: 'Gym Manager'
+  body: 'Need someone to manage my gym'
+  published: true
+  accepted: false
+  application: false
+  min_salary: 25.5
+  hours: 'Full Time'
+  skills: nil
+
+l2:
+  title: 'Gym Manager'
+  body: 'Need someone to manage my gym'
+  published: true
+  accepted: false
+  application: false
+  min_salary: 25.5
+  hours: 'Full Time'
+  skills: nil

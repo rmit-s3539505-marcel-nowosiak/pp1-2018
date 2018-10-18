@@ -1,0 +1,40 @@
+<%= form_with(model: employer, local: true) do |form| %>
+  <% if employer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :listing_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :listing_location %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :'Salary From:' %>
+    <%= form.number_field :min_salary, id: :listing_min_salary %>
+    <%= form.label :'To:' %>
+    <%= form.number_field :max_salary, id: :listing_max_salary %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :hours %>
+    <%= form.select :hours, ['Full-Time','Part-Time','Casual','Contract']%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

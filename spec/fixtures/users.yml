@@ -1,0 +1,5 @@
+u1:
+  email: 'seeded_user@gmail.com'
+  first_name: 'Johnny'
+  last_name: 'Userson'
+  confirmed_at: Time.now
