@@ -7,4 +7,11 @@ RSpec.describe Listing, type: :model do
 
     end
   end
+
+  context "attached to an employer profile" do
+    it "should be able to access the employer" do
+      l = listings(:l1)
+      
+    end
+  end
 end
